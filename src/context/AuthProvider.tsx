@@ -2,10 +2,12 @@ import { createContext, useState } from "react";
 import { useAuth } from "../hooks/useAuth";
 import {AuthContextType} from "../types/AuthContextType"
 const AuthContext = createContext<AuthContextType|null>(null);
+
 export const AuthProvider = ({children} : any) =>{
-    const [authorized, setAuthorized] = useState<boolean>(false)
+    const [token,setToken] = useState<string>('');
+
     return (
-        <AuthContext.Provider value={{authorized, setAuthorized}}>
+        <AuthContext.Provider value={{token,setToken}}>
             {children}
         </AuthContext.Provider>
     );
