@@ -6,6 +6,11 @@ export default defineConfig({
       plugins: [react()],
       server: {
         port: PORT,
+      },
+      define:{
+        'process.env': {
+          'API_URL': env.VITE_API_URL,
+        }
       }
 
 })

@@ -24,7 +24,7 @@ export const useAuth = () =>{
     }
     const login =  useCallback(async (Ldata : LoginData) =>{
         const {status,data} = await AuthServices.login(Ldata);
-       // console.log(data.token);
+        console.log(data);
        if(status === 200) {
             localStorage.setItem('user',JSON.stringify(data));
         }
