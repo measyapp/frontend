@@ -7,8 +7,9 @@ export interface TextProps{
     color?: 'blue'|'white';
     children : ReactNode;
     asChild? : boolean;
+    undelined? : boolean;
 }
-export function Text({size = 'md',color, children, asChild }: TextProps){
+export function Text({size = 'md',color, children, asChild, undelined=false }: TextProps){
     const Comp = asChild ? Slot :'span';
     return (
         <Comp  
@@ -18,6 +19,9 @@ export function Text({size = 'md',color, children, asChild }: TextProps){
                     'text-deep-blue': color === 'blue',
                     'text-bright-white': color === 'white',
                      
+                },
+                {
+                    'underline': undelined===true,
                 },
                 {
                     'text-xs': size === 'sm',

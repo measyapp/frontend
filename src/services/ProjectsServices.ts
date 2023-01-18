@@ -1,5 +1,7 @@
 import {Api} from "../providers"
 import { IProjectData } from "../types"
+
+
 const getAll =  () => {
   return  Api.get<IProjectData[]>("/projetos");
 }

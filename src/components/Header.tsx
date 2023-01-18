@@ -1,15 +1,15 @@
 import { ReactNode } from "react";
 import { BiHome } from "react-icons/bi";
 import { HiOutlineUserCircle,HiChevronLeft } from "react-icons/hi";
-import { CardButton } from "../components";
+import { ButtonIcon, CardButton } from "../components";
 import { Link } from "react-router-dom";
-import { DropdownMenu } from "./Dropdown";
-import { OrderOptions, metodologiasList } from "../data";
+import { useAuth } from "../hooks/useAuth";
 
 export interface HeaderProps{
     children?: ReactNode ;
 }
 export function Header({children}: HeaderProps){
+    const {authorized,logout} = useAuth();
     return (
         <div className='flex h-16 w-screen justify-between bg-deep-blue text-bright-white px-8 py-2 items-center'>
             
@@ -19,8 +19,9 @@ export function Header({children}: HeaderProps){
                 </Link>  
                 <Link to="/"> <CardButton icon={<BiHome size={39}/>}/></Link>
             </div>
+
             {children}
-           <DropdownMenu trigger={<HiOutlineUserCircle size={39}/>} options={metodologiasList}/>
+            {authorized ? <ButtonIcon text="Logout" color="white" onClickAlt={logout}/>:<Link to="/login"> <CardButton icon={<HiOutlineUserCircle size={39} className=""/>}/></Link>}
         </div>
         
     );

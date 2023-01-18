@@ -4,6 +4,11 @@ module.exports = {
     './src/**/**.tsx',
   ],
   theme: {
+    extend: {
+      spacing: {
+        '98': '25rem',
+      }
+    },
     fontSize: {
       xs: 14,
       sm: 16,
@@ -17,6 +22,7 @@ module.exports = {
      'bright-white': '#FFFFFF',
      'gray-shadow': '#D0D0D0',
      'inactive-blue': '#61799D',
+     'incorrect-red': '#E05656',
       gray: {
         900: '#121214',
         800: '#202024',

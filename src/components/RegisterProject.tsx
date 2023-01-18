@@ -1,7 +1,7 @@
 import {IProjectData} from "../types"
 import { HookProjects } from "../hooks";
 import { MdCancel}  from "react-icons/md"
-import { useEffect, useState } from "react";
+import { createRef, useEffect} from "react";
 import { Graph,IdentificationBadge} from "phosphor-react";
 import { useNavigate, useParams } from "react-router-dom";
 import {tiposList,metodologiasList,tamanhosList} from "../data"
@@ -9,50 +9,27 @@ import { ButtonIcon,ComboBox,Footer,Header,Text,TextInput } from "../components"
 
 export function ResgisterProject(){
     const {id} = useParams();
-    const [tamanho, setTamanho] = useState<number>(0);
-    const [metodologia, setMetodologia] = useState<number>(0);
-    const [tipo, setTipo] = useState<number>(0);
-    const [nome, setNome] = useState<string>("");
-    const [descricao, setDescricao] = useState<string>("");
-    const [gerente, setGerente] = useState<string>("");
     const {create,singleProject,getById,update} = HookProjects();
     const navigate = useNavigate();
 
-    const onClickHandleTamanhos = (tamanhoIndex : number)=>{
-        setTamanho(tamanhoIndex);
-    }
-    const onClickHandleMetodologia = (metodologiaIndex : number)=>{
-        setMetodologia(metodologiaIndex);
-        
-    }
-    const onClickHandleTipo = (tipoIndex : number)=>{
-        setTipo(tipoIndex);
-    
-        
-    }
-    const onChangeHandleName = ( newName : string)=>{
-        setNome(newName);
-       
-    }
-    const onChangeHandleDesc = ( newDesc : string)=>{
-        setDescricao(newDesc);
-      
-    }
-    const onChangeHandleGerente = ( newGerente : string)=>{
-        setGerente(newGerente);
-       
-    }
+    const nomeRef = createRef<any>();
+    const descRef = createRef<any>();
+    const gerenteRef = createRef<any>();
+    const tamanhoRef = createRef<any>();
+    const tipoRef = createRef<any>();
+    const metodologiaRef = createRef<any>();
+
     useEffect( ()=>{
         if((id!==undefined)&&(singleProject===undefined)){
            getById(id);
         }else {
            if (singleProject!== undefined) {
-            setNome(singleProject.nome);
-            setTamanho(singleProject.tamanho);
-            setTipo(singleProject.tipo);
-            setMetodologia(singleProject.metodologia);
-            setDescricao(singleProject.descricao);
-            setGerente(singleProject.gerente);
+            nomeRef.current.value = singleProject.nome;
+            descRef.current.value = singleProject.descricao;
+            gerenteRef.current.value = singleProject.gerente;
+            tamanhoRef.current.value = singleProject.tamanho
+            tipoRef.current.value = singleProject.tipo;
+            metodologiaRef.current.value = singleProject.metodologia;
            }
         }
     },[singleProject]);
@@ -60,13 +37,13 @@ export function ResgisterProject(){
     const SaveProject = ()=>{
         const newProject : IProjectData = {
             id: singleProject!==undefined?singleProject.id:0,
-            nome: nome,
+            nome: nomeRef.current.value,
             id_criador: singleProject!==undefined?singleProject.id_criador:"1",
-            descricao: descricao,
-            metodologia: metodologia,
-            tipo: tipo,
-            tamanho: tamanho,
-            gerente: gerente,
+            descricao: descRef.current.value,
+            metodologia: metodologiaRef.current.value,
+            tipo: tipoRef.current.value,
+            tamanho: tamanhoRef.current.value,
+            gerente: gerenteRef.current.value,
         }
         if (id===undefined){
             create(newProject);
@@ -74,7 +51,6 @@ export function ResgisterProject(){
             update(+id,newProject);
         }
         navigate('/projetos');
-        window.location.reload();
     }
     return(
         <div  className=" flex flex-col text-deep-blue gap-3 justify-between h-screen place-items-center">
@@ -87,15 +63,15 @@ export function ResgisterProject(){
                 </div>
                 <div className=" flex self-center w-full h-fit gap-20 pt-7 pb-10 ring-deep-blue ring-2 bg-bright-white">
                     <div className=" flex flex-col justify-between gap-6 w-3/5">
-                        <TextInput label="Nome do projeto" txtValue={singleProject!==undefined?singleProject.nome:''} placeholder="Ex.: My First Project" OnChange={onChangeHandleName}/>
-                        <TextInput label="Descrição" richText txtValue= {singleProject!==undefined?singleProject.descricao:''} placeholder="Ex.: This is my first project ..." OnChange={onChangeHandleDesc}/>
-                        <TextInput label="Gerente" txtValue={singleProject!==undefined?singleProject.gerente:''}  icon={<IdentificationBadge size={32}/>}  OnChange={onChangeHandleGerente}/>
+                        <TextInput mref={nomeRef} label="Nome do projeto" txtValue={singleProject!==undefined ?singleProject.nome:""} placeholder="Ex.: My First Project"/>
+                        <TextInput mref={descRef}label="Descrição" richText txtValue= {singleProject!==undefined ?singleProject.descricao:""} placeholder="Ex.: This is my first project ..." />
+                        <TextInput mref={gerenteRef} label="Gerente" txtValue={singleProject!==undefined ?singleProject.gerente:""}  icon={<IdentificationBadge size={32}/>}/>
                         
                     </div>
                     <div className="flex flex-col gap-6 mr-7 pr-7">
-                        <ComboBox label="Tipo" selected={tipo!==undefined?tipo:0} items={tiposList} selectionAction={onClickHandleTipo}/>
-                        <ComboBox label="Metodologia" selected= {metodologia!==undefined?metodologia:0} items = {metodologiasList} selectionAction={onClickHandleMetodologia}/>
-                        <ComboBox label="Tamanho" selected= {tamanho!==undefined?tamanho:0} items= {tamanhosList} selectionAction={onClickHandleTamanhos}/>
+                        <ComboBox mref={tipoRef} label="Tipo" selected={singleProject!==undefined ?singleProject.tipo:0} items={tiposList}/>
+                        <ComboBox mref={metodologiaRef} label="Metodologia" selected= {singleProject!==undefined ?singleProject.metodologia:0} items = {metodologiasList}/>
+                        <ComboBox mref={tamanhoRef} label="Tamanho" selected= {singleProject!==undefined ?singleProject.tamanho:0} items= {tamanhosList}/>
                         
                     </div>
                 </div>

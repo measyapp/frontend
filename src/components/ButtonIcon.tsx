@@ -2,7 +2,7 @@ import clsx from "clsx"
 import { ReactNode } from "react";
 
 export interface ButtonIconProps extends React.ButtonHTMLAttributes<HTMLButtonElement>{
-    icon : ReactNode;
+    icon? : ReactNode;
     text? : string;
     notActive?: boolean;
     header? : boolean;

@@ -1,30 +1,28 @@
 import { ComboBoxItem } from "../types";
 import { Text } from "../components";
 import { OrderOptions } from "../data";
+import { Ref } from "react";
 export interface ComboBoxProps{
    items?: ComboBoxItem[];
    label?: string; 
    selectionAction?: Function;
    selected?: number;
+   mref? : Ref<HTMLSelectElement>|null;
 }
 
-export function ComboBox({label,items,selectionAction,selected}:ComboBoxProps){
+export function ComboBox(props:ComboBoxProps){
 
     return (
         <div className="flex flex-col gap-2 text-deep-blue w-full ml-7">
-            {label&&(
-                <Text>{label}</Text>
+            {props.label&&(
+                <Text>{props.label}</Text>
             )} 
-            <select value={selected} aria-label={`Selecione o(a) ${label}`}  
-            
-            onChange={(e)=>{ if (selectionAction!== undefined) { selectionAction(e.target.value)}
-            }}
-            className="min-h-fit h-11 ring-2 py-3 pr-4 ring-deep-blue px-4 rounded-xl flex flex-col justify-around w-full items-center text-deep-blue"
-                    
+            <select ref = {props.mref} defaultValue={props.selected} aria-label={`Selecione o(a) ${props.label}`}  
+                className="min-h-fit h-11 ring-2 py-3 pr-4 ring-deep-blue px-4 rounded-xl flex flex-col justify-around w-full items-center text-deep-blue"  
             >
                 {/*<option selected>{'Selecione o(a) '+label}</option>*/}
-                {items!== undefined ? 
-                    items.map((order,index)=>(
+                {props.items!== undefined ? 
+                    props.items.map((order,index)=>(
                         <option key={index} value={index}>{order.description}</option>
                     )) :
                      OrderOptions.map((order,index)=>(

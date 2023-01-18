@@ -6,6 +6,7 @@ import { Graph, User, UserPlus} from "phosphor-react";
 import { useNavigate, useParams } from "react-router-dom";
 import { ButtonIcon,ComboBox,Footer,Header,Text,TextInput } from ".";
 import { funcaoList } from "../data";
+import { useAuth } from "../hooks/useAuth";
 
 
 
@@ -19,6 +20,7 @@ export function ResgisterUser(){
     const [senha, setSenha] = useState<string>("");
 
     const {create,user,getById,update} = HookUsers();
+    const {signup} = useAuth();
     
     const navigate = useNavigate();
 
@@ -45,7 +47,7 @@ export function ResgisterUser(){
             senha: senha,
         }
         if (id===undefined){
-            create(newUser);
+            signup(newUser);
         }else {
             update(+id,newUser);
         }

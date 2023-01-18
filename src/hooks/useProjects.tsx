@@ -1,17 +1,27 @@
-import { useCallback, useState } from "react"
+import { useCallback, useContext, useMemo, useState } from "react"
 import { ProjectsService } from "../services"
 import { IProjectData } from "../types"
 import { metodologiasList, tiposList } from "../data";
+import { useAuth } from "./useAuth";
 
 export const HookProjects = () =>{
+    const {authorized} = useAuth();
     const [projects,setProjects] = useState<IProjectData[]>([]);
     const [singleProject,setsingleProject] = useState<IProjectData>();
-    
+    const [querySearch,setQuerySearch] = useState<string>("");
+    const [fieldSearch,setFieldSearch] = useState<string>("")
+
+    const filteredProjects = useMemo(()=>{
+        return projects.filter(item =>{
+            return item.nome.toLocaleLowerCase().includes(querySearch.toLocaleLowerCase());    
+        })
+      },[projects,querySearch,fieldSearch]) 
+
     const getAll =  useCallback(async () =>{
         const {status, data} = await ProjectsService.getAll();
 
         if(status != 200) throw new Error();
-
+        //console.log(data)
         setProjects(data);
         
     },[])
@@ -35,30 +45,9 @@ export const HookProjects = () =>{
 
     },[])
     
-    const search = (Parameter:string,Field: String = "")=>{
-        if (Parameter===""){
-            getAll();
-        } else{
-            if (Field == "metodologia"){
-                return setProjects(projects.filter((element)=>{
-                    return projects.some((index)=>{
-                        return metodologiasList[element.metodologia].description.toLowerCase().includes(Parameter.toLocaleLowerCase());
-                    })
-                }))
-            }
-            else if (Field == "tipo"){
-                return setProjects(projects.filter((element)=>{
-                    return projects.some((index)=>{
-                        return tiposList[element.tipo].description.toLowerCase().includes(Parameter.toLocaleLowerCase());
-                    })
-                }))
-            } 
-            else setProjects(projects.filter((element)=>{
-                return projects.some((index)=>{
-                    return element.nome.toLowerCase().includes(Parameter.toLocaleLowerCase());
-                })
-            }));
-        }
+    const search = (Parameter:string,Field: string = "")=>{
+        setQuerySearch(Parameter);
+        setFieldSearch(Field);
     }
     const order = (Field : any)=>{
         //setProjects(projects.sort());
@@ -82,6 +71,7 @@ export const HookProjects = () =>{
         search,
         order,
         projects,
+        filteredProjects,
         singleProject
     }
 }
