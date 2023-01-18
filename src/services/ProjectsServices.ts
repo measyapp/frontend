@@ -8,27 +8,30 @@ import { authToken } from "./AuthToken";
 //import { getToken } from "./getToke";
 
 //const {token} = useContext(AuthContext) as AuthContextType;
-const token = authToken();
-if (token!=='') Api.defaults.headers['x-access-token'] = token;
    
 const getAll =  () => {
-  
+  const token = authToken();
+  if (token!=='') Api.defaults.headers['x-access-token'] = token;
   return  Api.get<IProjectData[]>("/projetos");
 }
 const getById=  (id : any) => {
-  
+  const token = authToken();
+  if (token!=='') Api.defaults.headers['x-access-token'] = token;
   return  Api.get<IProjectData>(`/projetos/${id}`);
 }
 const create = (data : IProjectData) => {
-  
+  const token = authToken();
+  if (token!=='') Api.defaults.headers['x-access-token'] = token;
   return Api.post<IProjectData>("/projetos/",data);
 }
 const update = (id : number,data :IProjectData) =>{
-  
+  const token = authToken();
+  if (token!=='') Api.defaults.headers['x-access-token'] = token;
   return Api.put(`/projetos/${id}`, data)
 }
 const remove = (id: number) =>{
-  
+  const token = authToken();
+  if (token!=='') Api.defaults.headers['x-access-token'] = token;
   return Api.delete(`/projetos/${id}`);
 }
 //const post = 
