@@ -1,11 +1,11 @@
 import { useCallback, useState } from "react"
 import { UserService } from "../services"
 import { IUserData } from "../types"
+import { useAuth } from "./useAuth";
 
 export const HookUsers = () =>{
     const [users,setUsers] = useState<IUserData[]>([]);
     const [user,setSingleUser] = useState<IUserData>();
-    
     const getAll =  useCallback(async () =>{
         const {status, data} = await UserService.getAll();
 

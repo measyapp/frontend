@@ -1,18 +1,29 @@
+
 import {Api} from "../providers"
 import { IUserData } from "../types"
+import { authToken } from "./AuthToken";
+
+const token = authToken();
+if (token!=='') Api.defaults.headers['x-access-token'] = token;
+   
 const getAll =  () => {
+  
   return  Api.get<IUserData[]>("/colaboradores");
 }
 const getById=  (id : any) => {
+  
   return  Api.get<IUserData>(`/colaboradores/${id}`);
 }
-const create = (data : IUserData) => {
+const create = (data : IUserData)=> {
+  
   return Api.post<IUserData>("/colaboradores",data);
 }
-const update = (id : number,data :IUserData) =>{
+const update = (id : number,data :IUserData)=>{
+  
   return Api.put(`/colaboradores/${id}`, data)
 }
-const remove = (id: number) =>{
+const remove = (id: number)=>{
+  
   return Api.delete(`/colaboradores/${id}`);
 }
 //const post = 

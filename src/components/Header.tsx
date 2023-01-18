@@ -9,7 +9,8 @@ export interface HeaderProps{
     children?: ReactNode ;
 }
 export function Header({children}: HeaderProps){
-    const {authorized,logout} = useAuth();
+    const {logout,isLogged} = useAuth();
+    const authorized = isLogged();
     return (
         <div className='flex h-16 w-screen justify-between bg-deep-blue text-bright-white px-8 py-2 items-center'>
             
