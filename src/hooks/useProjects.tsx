@@ -5,6 +5,7 @@ import { metodologiasList, tiposList } from "../data";
 import { useAuth } from "./useAuth";
 
 export const HookProjects = () =>{
+    const {isLogged} = useAuth();
     const [projects,setProjects] = useState<IProjectData[]>([]);
     const [singleProject,setsingleProject] = useState<IProjectData>();
     const [querySearch,setQuerySearch] = useState<string>("");
