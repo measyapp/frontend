@@ -51,7 +51,7 @@ export function ResgisterUser(){
         }else {
             update(+id,newUser);
         }
-        navigate('/usuarios');
+        navigate('/home');
         window.location.reload();
     }
     return(
