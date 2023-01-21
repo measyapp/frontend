@@ -32,6 +32,12 @@ module.exports = {
       },
     },
     extend: {
+      width:{
+        '400': '400px'
+      },
+      height:{
+        '500':'400px'
+      },
       fontFamily: {
         sans: '"Nato Sans", sans-serif'
       },
