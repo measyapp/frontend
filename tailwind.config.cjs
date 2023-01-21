@@ -4,11 +4,6 @@ module.exports = {
     './src/**/**.tsx',
   ],
   theme: {
-    extend: {
-      spacing: {
-        '98': '25rem',
-      }
-    },
     fontSize: {
       xs: 14,
       sm: 16,
@@ -18,7 +13,7 @@ module.exports = {
       '2xl': 32,
     },
     colors:{
-     'deep-blue': '#2B5DA7',
+     'deep-blue': '#19478D',
      'bright-white': '#FFFFFF',
      'gray-shadow': '#D0D0D0',
      'inactive-blue': '#61799D',
@@ -32,8 +27,16 @@ module.exports = {
       },
     },
     extend: {
+      spacing:{
+        '98': '25rem'
+      },
       width:{
-        '400': '400px'
+        '400': '400px',
+        '500': '500px',
+        '600': '600px',
+        '700': '700px',
+        '800': '800px',
+        '900': '900px'
       },
       fontFamily: {
         sans: '"Nato Sans", sans-serif'

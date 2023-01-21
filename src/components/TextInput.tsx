@@ -7,29 +7,31 @@ export interface TextInputProps{
     placeholder?: string;
     label? : string;
     icon? : ReactNode;
-    OnChange? : Function;
+    OnChange? : (event: ChangeEvent<HTMLInputElement>) => void;
     txtValue?: string;
     light?: boolean | false;
     mref?: Ref<any> | null;
+    error?: boolean | false;
+    helperText?: string | "";
 }
 
 
-export const TextInputAlt = forwardRef<Ref<any>,TextInputProps>((props,ref)=>(
-    <input>
-    </input>
-));
-
 export function TextInput (props:TextInputProps){
     const [focused, setFocus] = useState<boolean>(false);
-    const onChangeHandler= ( e: ChangeEvent<HTMLInputElement> ) =>{
-        if (props.OnChange!== undefined ){
-            props.OnChange(e.target.value);
-        }
-    }
     return (
-        <div className='flex flex-col gap-2 text-deep-blue w-full ml-7'>
+        <div className={clsx('flex flex-col gap-2 w-full',{
+                            '  text-deep-blue': !props.error, 
+                            '  text-incorrect-red': props.error, 
+        })}>
             {props.label&&<Text color='blue' bold size='lg'>{props.label}</Text>}
-            <div className={clsx('flex ring-2 overflow-hidden  ring-deep-blue rounded-xl w-full min bg-gray-100',{'h-40': props.richText,'h-11':!props.richText })}>
+            <div className={clsx('flex ring-2 overflow-hidden  rounded-xl w-full min bg-gray-100',
+                                {'h-40': props.richText,
+                                 'h-11':!props.richText,
+                                 ' ring-deep-blue': !props.error, 
+                                 ' ring-incorrect-red': props.error, 
+                                })
+                            }
+            >
                 {props.icon!==undefined &&(
                     <div className={clsx('px-2 pt-2 place-items-center items-center irst-letter:text-center justify-centerrounded-l-xl h-full',
                                     {
@@ -50,7 +52,7 @@ export function TextInput (props:TextInputProps){
                         'bg-bright-white': focused,
         
                     })} 
-                    onChange={(e)=>{onChangeHandler(e as unknown as ChangeEvent<HTMLInputElement>)}}
+                    onChange={(e) => props.OnChange}
                 />: <input ref={props.mref as Ref<HTMLInputElement>}  onFocus={()=>{setFocus(true)}} onBlur={()=>{setFocus(false)}} type= {props.senha?"password":"text"} defaultValue ={props.txtValue} 
                             className={clsx('h-full w-full px-3 focus:bg-bright-white  bg-gray-100 outline-none outline-1 '   ,
                                         {
@@ -58,9 +60,11 @@ export function TextInput (props:TextInputProps){
                                             'rounded-xl' : props.icon===undefined,
                             
                                         }
-                )} placeholder={props.placeholder} onChange={(e)=>{onChangeHandler(e)}}/>
+                )} placeholder={props.placeholder} onChange={(e) => props.OnChange}/>
                 }
             </div>
+
+            {props.error&&(<Text>{props.helperText}</Text>)}
         </div>
     )
 }
