@@ -1,7 +1,7 @@
 {
   "name": "frontend",
   "private": true,
-  "version": "0.0.0",
+  "version": "1.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -39,7 +39,6 @@
     "typescript": "^4.6.4",
     "vite": "^3.2.3",
     "@types/react-native-dotenv": "^0.2.0",
-    "@types/yup": "^0.32.0",
     "yup": "^0.32.11"
   },
   "devDependencies": {
