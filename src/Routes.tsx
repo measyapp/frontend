@@ -1,8 +1,9 @@
 
 import './styles/globais.css'
-import { Home,ProjectList,UserList,ResgisterUser,ResgisterProject, Login,RequireAuth} from "./components";
+import {RequireAuth} from "./components";
 import { Routes, Route } from 'react-router-dom';
 import { AuthProvider } from './context/AuthProvider';
+import {Home,ProjectList,UserList,ResgisterUser,ResgisterProject, Login} from "./pages"
 
 export function  AppRoutes () {
   return (

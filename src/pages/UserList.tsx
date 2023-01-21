@@ -1,6 +1,6 @@
 
 import { FaPencilAlt,FaTrash } from "react-icons/fa";
-import { Header, ProjectCard, ListHeader, Footer} from ".";
+import { Header, ProjectCard, ListHeader, Footer} from "../components";
 import { useEffect} from "react";
 import { HookUsers } from "../hooks";
 import { IProjectData } from "../types";

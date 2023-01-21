@@ -7,13 +7,12 @@ import { useAuth } from "../hooks/useAuth";
 
 export interface HeaderProps{
     children?: ReactNode ;
+    clean?: boolean| false;
 }
-export function Header({children}: HeaderProps){
+export function Header({children, clean=false}: HeaderProps){
     const {logout,isLogged} = useAuth();
-    const authorized = isLogged();
     return (
         <div className='flex h-16 w-screen justify-between bg-deep-blue text-bright-white px-8 py-2 items-center'>
-            
             <div className="flex items-center" >
                 <Link to=".." relative="path">
                     <CardButton icon={<HiChevronLeft size={39}/>}/> 
@@ -22,7 +21,7 @@ export function Header({children}: HeaderProps){
             </div>
 
             {children}
-            {authorized ? <ButtonIcon text="Logout" color="white" onClickAlt={logout}/>:<Link to="/login"> <CardButton icon={<HiOutlineUserCircle size={39} className=""/>}/></Link>}
+            {isLogged() ? <ButtonIcon text="Logout" color="white" onClickAlt={logout}/>:<Link to="/login"> <CardButton icon={<HiOutlineUserCircle size={39} className=""/>}/></Link>}
         </div>
         
     );

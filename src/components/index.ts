@@ -1,4 +1,3 @@
-export * from "./Home"
 export * from "./ProjectCard"
 export * from "./ListHeader"
 export * from "./Header"
@@ -10,14 +9,9 @@ export * from "./Text";
 export * from "./Combobox";
 export * from "./ButtonMenu";
 export * from "./CardButton";
-export * from "./Menu";
 export * from "./TextInput";
-export * from "./ResgisterUser"
-export * from "./RegisterProject"
-export * from "./UserList"
-export * from "./ProjectList"
 export * from "./UserCard"
-export * from "./Login"
+export * from "../pages/Login"
 export * from "./Checkbox"
 export * from "./RequireAuth"
 

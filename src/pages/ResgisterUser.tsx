@@ -4,7 +4,7 @@ import { MdCancel}  from "react-icons/md"
 import { useEffect, useState } from "react";
 import { Graph, User, UserPlus} from "phosphor-react";
 import { useNavigate, useParams } from "react-router-dom";
-import { ButtonIcon,ComboBox,Footer,Header,Text,TextInput } from ".";
+import { ButtonIcon,ComboBox,Footer,Header,Text,TextInput } from "../components";
 import { funcaoList } from "../data";
 import { useAuth } from "../hooks/useAuth";
 

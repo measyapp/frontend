@@ -1,4 +1,5 @@
-import { Footer,Header,Menu} from '../components'
+import { Footer,Header} from '../components'
+import {Menu} from "./Menu"
 export function Home() {
   return (
     <div>

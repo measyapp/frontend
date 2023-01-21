@@ -28,7 +28,7 @@ export function TextInput (props:TextInputProps){
     }
     return (
         <div className='flex flex-col gap-2 text-deep-blue w-full ml-7'>
-            {props.label&&<Text color='blue' size='lg'>{props.label}</Text>}
+            {props.label&&<Text color='blue' bold size='lg'>{props.label}</Text>}
             <div className={clsx('flex ring-2 overflow-hidden  ring-deep-blue rounded-xl w-full min bg-gray-100',{'h-40': props.richText,'h-11':!props.richText })}>
                 {props.icon!==undefined &&(
                     <div className={clsx('px-2 pt-2 place-items-center items-center irst-letter:text-center justify-centerrounded-l-xl h-full',
