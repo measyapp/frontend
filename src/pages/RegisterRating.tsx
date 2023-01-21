@@ -2,9 +2,12 @@ import { Rating } from "@mui/material";
 import { ButtonIcon, Text,TextInput } from "../components";
 import { createRef, useState } from "react";
 import { useParams } from "react-router";
-export function EvaluationForm(){
+import { IRatingData } from "../types";
+import { HookRatings} from "../hooks"
+export function RegisterRating(){
     const {id } = useParams();
-    const [nota,setNota] = useState<number>();
+    const {create} = HookRatings();
+    const [nota,setNota] = useState<number>(0);
     const notaRef = createRef<any>();
     const comentarioRef = createRef<any>();
 
@@ -12,6 +15,17 @@ export function EvaluationForm(){
         console.log(notaRef.current.value);
         console.log(nota);
         console.log(comentarioRef.current.value);
+
+        const newRating : IRatingData = {
+            id: 0,
+            id_autor: 1,
+            id_indicacao:1,
+            nota : nota,
+            comentario: comentarioRef.current.value
+        }
+
+        create(newRating);
+        
         
     }
     return (

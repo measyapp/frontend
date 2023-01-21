@@ -24,12 +24,14 @@ export const HookRatings = () =>{
         const {status}= await RatingService.create(data);
 
         if (status != 200) throw new Error();
+        else console.log("Sucesso");
 
     },[])
     const update =  useCallback(async (id: number,data : IRatingData) =>{
         const {status}= await RatingService.update(id,data);
 
         if (status != 200) throw new Error();
+
 
     },[])
     const remove = useCallback(async (id : number) =>{

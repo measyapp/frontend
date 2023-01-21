@@ -15,8 +15,8 @@ export const HookMetricas = () =>{
         const {status, data} = await MetricsService.getAll();
 
         if(status != 200) throw new Error();
-        //console.log(data)
-       // setMetricas(data);
+        console.log(data)
+        setMetricas(data);
         
     },[])
     const getById =  useCallback(async (id : any) =>{

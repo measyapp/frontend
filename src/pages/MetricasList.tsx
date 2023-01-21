@@ -19,7 +19,7 @@ export function MetricasList(){
             <Header>
                 <h5 className="text-2xl">Métricas</h5>
             </Header>
-            <ListHeader OnSerching={(e : string,field :string)=>{}} listObjectName={"métrica"} buttonLink="/projetos/cadastro"/>
+            <ListHeader addButton addButtonText={"Nova Métrica"} OnSerching={(e : string,field :string)=>{}} listObjectName={"métrica"} buttonLink="/projetos/cadastro"/>
             <div className=" h-3/4 flex gap-2 mx-14 mt-2 mb-1 flex-wrap overflow-y-scroll max-w-full">
                 {metricas.length>0?metricas.map((imetrics,index)=>(
                         <MetricaCard key = {(index).toString()} item = {imetrics}/>

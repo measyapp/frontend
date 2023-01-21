@@ -10,33 +10,32 @@ import { useFormValidation } from "../formValidation/useFormValidation";
 import youtube_logo from "../images/youtube_logo.svg";
 import formula from "../images/formula.svg";
 import { number } from "yup/lib/locale";
-import { EvaluationForm } from "./EvaluationForm";
+import { RegisterRating} from "./RegisterRating";
 import { createPortal } from "react-dom";
 
 export function MetricaFile(){
     const {id} = useParams();
     let tId= 0;
     const [item , setItem] = useState<IMetricasData>()
-    const {getById, singleMetrica} = HookMetricas();
+    const {getById, singleMetrica,metricas} = HookMetricas();
     const navigate = useNavigate();
 
-    useEffect(()=>{
+    useEffect( ()=>{
         tId =id!==undefined?+id-1:-1;
-        setItem(Metricas[tId]);
-        
+        getById(tId);
     },[])
     return(
         <div  className=" flex flex-col text-deep-blue gap-3 justify-between h-screen place-items-center">
             <Header/>
             <div className="flex flex-col max-w-4xl min-w-max items-center w-9/12 h-fit">
                 <div className="justify-center items-center gap-3 w-full h-14 rounded-t-2xl ring-deep-blue ring-2 bg-deep-blue flex text-bright-white">
-                {item&&item.nome}
+                {singleMetrica&&singleMetrica.nome}
                 </div>
                 <div className=" flex self-center p-6 w-full h-fit gap-20 pt-7 pb-10 ring-deep-blue rounded-b-2xl ring-2 bg-bright-white">
                     <div className=" flex flex-col justify-between gap-6 w-3/5">
                         <TextInput richText
                                    label="Descrição" 
-                                   txtValue={item&&item.descricao}
+                                   txtValue={singleMetrica&&singleMetrica.descricao}
                                    readonly
                         />
                         <div className="flex flex-col gap-6 mr-5 pr-7 mt-7">
@@ -50,13 +49,11 @@ export function MetricaFile(){
                             
                         
                         </div>
-                        
-                            
-
+                    
                         <TextInput richText
                                    label="Referencial teórico" 
                                    placeholder="Ex.: My First Project"
-                                   txtValue={item&&item.referencial}
+                                   txtValue={singleMetrica&&singleMetrica.referencial}
                                    readonly
                         /> 
                     </div>
