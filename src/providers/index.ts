@@ -8,7 +8,6 @@ export const Api = axios.create({
     withCredentials: true,
     headers: {
         'Access-Control-Allow-Origin': 'true',
-        'Origin': process.env.API_URL
     },
 
     
