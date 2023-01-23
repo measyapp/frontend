@@ -129,7 +129,7 @@ export const initialProjects = [
         "metodologia": "SCRUM",
         "tipo": "--",
         "tamanho": "Médio",
-        "gerente": "Marcelly Garcia"
+        "gerente": "Marcelly Garcia",
     },
     {
         "id": 55553,
@@ -209,6 +209,7 @@ export const Metricas : IMetricasData[] = [
         
         "id": 1,
         "tipo": "",
+        "referencial": "WERKEMA, C. Lean Seis Sigma: Introdução às ferramentas do Lean Manufacturing. 1ª. ed. Belo Horizonte: Werkema Editora, v. 4, 2006.",
         "avaliacoes": 10,
         "nome": "Tempo de entrega (lead time)",
         "nota": 4.67,
@@ -218,6 +219,7 @@ export const Metricas : IMetricasData[] = [
     {
         "id": 2,
         "tipo": "",
+        "referencial": "WERKEMA, C. Lean Seis Sigma: Introdução às ferramentas do Lean Manufacturing. 1ª. ed. Belo Horizonte: Werkema Editora, v. 4, 2006.",
         "avaliacoes": 10,
         "nome": "Quantidade de código",
         "nota": 2.5,
@@ -225,6 +227,7 @@ export const Metricas : IMetricasData[] = [
     },{
         "id": 3,
         "tipo": "",
+        "referencial": "WERKEMA, C. Lean Seis Sigma: Introdução às ferramentas do Lean Manufacturing. 1ª. ed. Belo Horizonte: Werkema Editora, v. 4, 2006.",
         "avaliacoes": 10,
         "nome": "Trabalho em progresso (WIP)",
         "nota": 4,
@@ -232,6 +235,7 @@ export const Metricas : IMetricasData[] = [
     },{
         "id": 4,
         "tipo": "",
+        "referencial": "WERKEMA, C. Lean Seis Sigma: Introdução às ferramentas do Lean Manufacturing. 1ª. ed. Belo Horizonte: Werkema Editora, v. 4, 2006.",
         "avaliacoes": 10,
         "nome": "Taxa de sucesso da meta Sprint",
         "nota": 1.5,
@@ -240,6 +244,7 @@ export const Metricas : IMetricasData[] = [
     {
         "id": 5,
         "tipo": "",
+        "referencial": "WERKEMA, C. Lean Seis Sigma: Introdução às ferramentas do Lean Manufacturing. 1ª. ed. Belo Horizonte: Werkema Editora, v. 4, 2006.",
         "avaliacoes": 10,
         "nome": "Velocidade ágil",
         "nota": Math.random()*5,
@@ -247,6 +252,7 @@ export const Metricas : IMetricasData[] = [
     },{
         "id": 6,
         "tipo": "",
+        "referencial": "WERKEMA, C. Lean Seis Sigma: Introdução às ferramentas do Lean Manufacturing. 1ª. ed. Belo Horizonte: Werkema Editora, v. 4, 2006.",
         "avaliacoes": 10,
         "nome": "Número de versões de software",
         "nota": Math.random()*5,
@@ -254,6 +260,7 @@ export const Metricas : IMetricasData[] = [
     },{
         "id": 7,
         "tipo": "",
+        "referencial": "WERKEMA, C. Lean Seis Sigma: Introdução às ferramentas do Lean Manufacturing. 1ª. ed. Belo Horizonte: Werkema Editora, v. 4, 2006.",
         "avaliacoes": 10,
         "nome": "Cobertura de código",
         "nota": Math.random()*5,
@@ -262,6 +269,7 @@ export const Metricas : IMetricasData[] = [
     {
         "id": 8,
         "tipo": "",
+        "referencial": "WERKEMA, C. Lean Seis Sigma: Introdução às ferramentas do Lean Manufacturing. 1ª. ed. Belo Horizonte: Werkema Editora, v. 4, 2006.",
         "avaliacoes": 10,
         "nome": "Incidentes de segurança reais",
         "nota": Math.random()*5,
@@ -270,6 +278,7 @@ export const Metricas : IMetricasData[] = [
     {
         "id": 9,
         "tipo": "",
+        "referencial": "WERKEMA, C. Lean Seis Sigma: Introdução às ferramentas do Lean Manufacturing. 1ª. ed. Belo Horizonte: Werkema Editora, v. 4, 2006.",
         "avaliacoes": 10,
         "nome": "Net Promoter Score (NPS)",
         "nota": Math.random()*5,
@@ -278,6 +287,7 @@ export const Metricas : IMetricasData[] = [
     {
         "id": 10,
         "tipo": "",
+        "referencial": "WERKEMA, C. Lean Seis Sigma: Introdução às ferramentas do Lean Manufacturing. 1ª. ed. Belo Horizonte: Werkema Editora, v. 4, 2006.",
         "avaliacoes": 10,
         "nome": "Vulnerabilidades de segurança",
         "nota": Math.random()*5,

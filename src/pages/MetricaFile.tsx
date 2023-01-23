@@ -35,16 +35,17 @@ export function MetricaFile(){
                         <TextInput richText
                                    label="Descrição" 
                                    txtValue={item&&item.descricao}
+                                   readonly
                         />
                         <div className="flex flex-col gap-6 mr-5 pr-7 mt-7">
-                        <div className="flex">
-                            <Text size="lg">Como é calculada</Text>
-                        </div>
-                        
-                        <div className="flex h-fit w-48 ring-2 overflow-hidden rounded-2xl ring-deep-blue place-items-center justify-center">
-                                <img src={formula} width={530}/>
+                            <div className="flex">
+                                <Text size="lg">Como é calculada</Text>
                             </div>
-                        
+                            
+                            <div className="flex h-fit w-48 ring-2 overflow-hidden rounded-2xl ring-deep-blue place-items-center justify-center">
+                                    <img src={formula} width={530}/>
+                            </div>
+                            
                         
                         </div>
                         
@@ -53,7 +54,8 @@ export function MetricaFile(){
                         <TextInput richText
                                    label="Referencial teórico" 
                                    placeholder="Ex.: My First Project"
-
+                                   txtValue={item&&item.referencial}
+                                   readonly
                         /> 
                     </div>
                     <div className="flex flex-col gap-6 mr-5 pr-7 mt-7">

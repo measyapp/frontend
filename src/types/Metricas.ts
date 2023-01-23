@@ -5,5 +5,6 @@ export interface IMetricasData{
     nome: string,
     nota?: number ,
     descricao: string,
+    referencial : string,
     tipo : string
 }

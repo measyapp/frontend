@@ -13,6 +13,7 @@ export interface TextInputProps{
     mref?: Ref<any> | null;
     error?: boolean | false;
     helperText?: string | "";
+    readonly?: boolean | false;
 }
 
 
@@ -45,7 +46,7 @@ export function TextInput (props:TextInputProps){
                 )}
                 {/**Se estiver assinalado com um rich text, utiliza a tag rich text, se nao utiliza o input*/}
                {props.richText? 
-               <textarea ref={props.mref as Ref<HTMLTextAreaElement> } defaultValue={props.txtValue!==undefined?props.txtValue:''} className={clsx('h-full w-full px-2 focus:bg-bright-white  bg-gray-100 outline-none outline-1 text pt-2',
+               <textarea readOnly={props.readonly} ref={props.mref as Ref<HTMLTextAreaElement> } defaultValue={props.txtValue!==undefined?props.txtValue:''} className={clsx('h-full w-full px-2 focus:bg-bright-white  bg-gray-100 outline-none outline-1 text pt-2',
                     {
                         'rounded-r-xl' : props.icon!==undefined,
                         'rounded-xl' : props.icon===undefined,
