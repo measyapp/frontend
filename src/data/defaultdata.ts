@@ -1,4 +1,5 @@
 import { ComboBoxItem, IProjectData } from "../types";
+import { IMetricasData } from "../types/Metricas";
 import { SearchItems } from "../types/SearchItems";
 
 export const OrderOptions = [
@@ -203,6 +204,30 @@ export const initialProjects = [
     }
 ] as unknown as IProjectData;
 
+export const Metricas : IMetricasData[] = [
+    {
+        "avaliacoes": 10,
+        "nome": "Metrica 1",
+        "nota": 4.67,
+        "descricao": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+    },
+    {
+        "avaliacoes": 10,
+        "nome": "Metrica 2",
+        "nota": 2.5,
+        "descricao": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+    },{
+        "avaliacoes": 10,
+        "nome": "Metrica 3",
+        "nota": 4,
+        "descricao": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+    },{
+        "avaliacoes": 10,
+        "nome": "Metrica 4",
+        "nota": 1.5,
+        "descricao": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+    },
 
+]
 
 

@@ -18,6 +18,7 @@ module.exports = {
      'gray-shadow': '#D0D0D0',
      'inactive-blue': '#61799D',
      'incorrect-red': '#E05656',
+     'correct-green': '#359851',
       gray: {
         900: '#121214',
         800: '#202024',

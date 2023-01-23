@@ -6,7 +6,6 @@ export interface IUserData{
     funcao: number,
     email: string,
     senha: string,
-    confirmaSenha: string;
     createdAt?: string,
     updatedAt?: string
 }
@@ -22,8 +21,7 @@ export const validateUser = Yup.object().shape({
             matches(/[0-9]{3}\.?[0-9]{3}\.?[0-9]{3}\-?[0-9]{2}/,"Formato de cpf inválido"),
     senha: Yup.string().required("Campo Obrigatório")
            .min(6,"A senha deve conter no mínimo 6 caracteres"),
-   confirmaSenha: Yup.string().required('Campo Obrigatório')
-                    .oneOf([Yup.ref('password'), null], 'As senhas precisam ser iguais.'),
+   
     
 
 });

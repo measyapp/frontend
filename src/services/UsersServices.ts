@@ -3,9 +3,6 @@ import {Api} from "../providers"
 import { IUserData } from "../types"
 import { authToken } from "./AuthToken";
 
-const token = authToken();
-if (token!=='') Api.defaults.headers['x-access-token'] = token;
-   
 const getAll =  () => {
   
   const token = authToken();

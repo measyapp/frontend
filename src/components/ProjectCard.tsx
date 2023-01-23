@@ -3,7 +3,7 @@ import { IProjectData } from "../types";
 import { CardButton } from "../components";
 import { HookProjects } from "../hooks";
 import { useNavigate } from "react-router-dom";
-import moment from "moment";
+//import moment from "moment";
 
 export interface ProjectCardProps{
     item : IProjectData;
@@ -28,7 +28,7 @@ export function ProjectCard({item} : ProjectCardProps){
             </div>
             <p className="h-12 resize-none w-full break-words overflow-hidden max-h-12 mt-3 px-6 font-sans text-md text-deep-blue text-cente break-word"> {item.descricao}</p>
             <div className="flex gap-2 font-sans text-xs place-items-end mt-1.5  text-deep-blue text-center break-word self-end pt-2">
-                <p className="mr-2 ml-4 text-center">{'Modificado em '+moment(item.updatedAt).format('DD/MM/YYYY' )+' às '+moment(item.updatedAt).format('HH:mm')}</p>
+                <p className="mr-2 ml-4 text-center">{'Modificado em '/*+moment(item.updatedAt).format('DD/MM/YYYY' )+' às '+moment(item.updatedAt).format('HH:mm')*/}</p>
                   <CardButton icon={<FaPencilAlt/>} label="Editar" onClick={editProject}/>
                   <CardButton icon={<FaTrash/>} label = "Excluir" onClick={deleteProject}/>
             </div>

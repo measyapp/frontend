@@ -12,8 +12,13 @@ const signup=  (data : IUserData) => {
   return  Api.post('/auth/signup',data);
 }
 
+const getTokenPassReset =  (email : string) => {
+  return  Api.get('/auth/resetPassword/'+email);
+}
+
 export const AuthServices = {
     login,
     logout,
-    signup
+    signup,
+    getTokenPassReset
 }

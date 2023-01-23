@@ -42,7 +42,6 @@ export function ResgisterUser(){
             funcao: funcao,
             email: email.current.value,
             senha: senha.current.value,
-            confirmaSenha: confirmasenha.current.value,
         }
         const result = await validateError(newUser);
         if (result){
@@ -83,12 +82,6 @@ export function ResgisterUser(){
                                    placeholder="*********" 
                                    mref={senha}
                                    {...handleErrorMessage("senha")}
-                                   />
-                        <TextInput label="Confirmação de Senha:" 
-                                   senha   
-                                   placeholder="Confirme sua senha" 
-                                   mref={confirmasenha}
-                                   {...handleErrorMessage("confirmaSenha")}
                                    />
                         
                     </div>

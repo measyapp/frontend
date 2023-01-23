@@ -41,10 +41,17 @@ export const useAuth = () =>{
         const {status} = await AuthServices.signup(data);
 
     },[])
+
+    const getTokenPassReset = async (email : string )=>{
+        const {status,data} = await AuthServices.getTokenPassReset(email);
+
+        return data.token;
+    }
     return {
         login,
         logout,
         signup,
         isLogged,
+        getTokenPassReset,
     }
 }
