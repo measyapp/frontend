@@ -47,11 +47,17 @@ export const useAuth = () =>{
 
         return data.token;
     }
+
+    const resetPassword= async (newPass : String, token : String)=>{
+        const {status, data} =  await AuthServices.resetPassword(newPass,token);
+        return status
+    }
     return {
         login,
         logout,
         signup,
         isLogged,
         getTokenPassReset,
+        resetPassword
     }
 }

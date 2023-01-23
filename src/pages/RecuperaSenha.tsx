@@ -16,7 +16,7 @@ export function RecuperaSenha(){
             const SERVICE_ID = process.env.EMAIL_SERVICE||"EMAIL_SERVICE"
             const TEMPLATE_ID = process.env.EMAIL_TEMPLATE||"TEMPLATE"
             const result = await emailjs.send(SERVICE_ID,TEMPLATE_ID,{
-                    token:   process.env.APP_URL+"/redefineSenha/"+(token as string).replace('.','*dot*'),
+                    token:   process.env.APP_URL+"/redefineSenha/"+(token as string).replaceAll('.','*dot*'),
                     to_email: emailRef.current.value            
             },process.env.EMAIL_PKEY);
             console.log(result.status);
