@@ -22,7 +22,7 @@ export function Header({children, clean=false}: HeaderProps){
                 <Link to="/"> <CardButton icon={<BiHome size={39}/>}/></Link>
             </div>
             {children}
-            {isLogged() ? <Link to="/"><CardButton label="Logout" icon={<MdCancel size={25} onClick={(e)=>{logout(); window.location.reload()}}/>}/> </Link> :<Link to="/login"> <CardButton icon={<HiOutlineUserCircle size={39} className=""/>}/></Link>}
+            {isLogged() ? <Link to="/"><CardButton label="Logout" icon={<MdCancel size={25} onClick={(e)=>{logout()}}/>}/> </Link> :<Link to="/login"> <CardButton icon={<HiOutlineUserCircle size={39} className=""/>}/></Link>}
         </div>
         
     );
