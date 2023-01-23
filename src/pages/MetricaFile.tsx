@@ -19,7 +19,7 @@ export function MetricaFile(){
     const navigate = useNavigate();
 
     useEffect(()=>{
-        tId =id!==undefined?+id:-1;
+        tId =id!==undefined?+id-1:-1;
         setItem(Metricas[tId]);
         
     },[])
