@@ -66,7 +66,7 @@ export function ResgisterProject(){
                     <Graph size={32}/>
                     {singleProject!==undefined ?<Text>{singleProject.nome}</Text> : <Text>Novo Projeto</Text>}
                 </div>
-                <div className=" flex self-center w-full h-fit gap-20 pt-7 pb-10 ring-deep-blue ring-2 bg-bright-white">
+                <div className=" flex self-center w-full h-fit gap-20 pt-7 pb-10 px-8 ring-deep-blue ring-2 bg-bright-white">
                     <div className=" flex flex-col justify-between gap-6 w-3/5">
                         <TextInput mref={nomeRef} 
                                    label="Nome do projeto" 
@@ -98,8 +98,13 @@ export function ResgisterProject(){
                     </div>
                 </div>
                 <div className=" w-full h-20  flex gap-7 justify-center rounded-b-2xl place-items-center ring-deep-blue ring-2 bg-bright-white">
-                    <ButtonIcon icon={<Graph size={32}/>} onClickAlt={SaveProject} text="Salvar projeto"/>
-                    <ButtonIcon icon={<MdCancel size={32}/>} text="Cancelar"/>
+                    <div className="w-52">
+                       <ButtonIcon onClickAlt={SaveProject} text="Salvar projeto"/>
+                    </div>
+                    <div className="w-52">
+                          <ButtonIcon text="Cancelar"/>
+                    </div>
+                    
                 </div>
             </div>
             <Footer/>

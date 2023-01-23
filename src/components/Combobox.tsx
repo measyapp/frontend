@@ -13,7 +13,7 @@ export interface ComboBoxProps{
 export function ComboBox(props:ComboBoxProps){
 
     return (
-        <div className="flex flex-col gap-2 text-deep-blue w-full ml-7">
+        <div className="flex flex-col gap-2 text-deep-blue w-full">
             {props.label&&(
                 <Text>{props.label}</Text>
             )} 

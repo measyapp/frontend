@@ -26,10 +26,8 @@ export function ProjectList(){
         <div  className=" flex flex-col gap-3 justify-between h-screen">
             
             <div className="flex flex-col gap-1">
-                <Header>
-                    <h5 className="text-2xl">Meus Projetos</h5>
-                </Header>
-             <ListHeader OnSerching={(e : string,field :string)=>{setQuerySearch(e);setFieldSearch(field)}} OnOrder={order} listObjectName={"projeto"} searchItems={projectSearchable} buttonLink="/projetos/cadastro"/>
+                <Header/>
+             <ListHeader addButton addButtonText={"Novo Projeto"} OnSerching={(e : string,field :string)=>{setQuerySearch(e);setFieldSearch(field)}} OnOrder={order} listObjectName={"projeto"} searchItems={projectSearchable} buttonLink="/projetos/cadastro"/>
             </div>
 
             <div className=" h-3/4 flex gap-2 mx-14 mt-2 mb-1 flex-wrap overflow-y-scroll max-w-full">

@@ -98,13 +98,17 @@ export function ResgisterUser(){
                                    placeholder="99 99999-9999" 
                                    mref={telefone}
                                   />
-                        <ComboBox label="Funçao:" items={funcaoList} selected={funcao} selectionAction={(e:any)=>{setFuncao(e);}}/>
+                        <ComboBox label="Função:" items={funcaoList} selected={funcao} selectionAction={(e:any)=>{setFuncao(e);}}/>
                     </div>
                     
                 </div>
                 <div className=" w-full h-20  flex gap-7 justify-center rounded-b-2xl place-items-center ring-deep-blue ring-2 bg-bright-white">
-                    <ButtonIcon icon={<Graph size={32}/>} onClickAlt={SaveUser} text="Salvar usuário"/>
-                    <ButtonIcon icon={<MdCancel size={32}/>} text="Cancelar"/>
+                <div className="w-52">
+                       <ButtonIcon onClickAlt={SaveUser} text="Gravar Usuário"/>
+                    </div>
+                    <div className="w-52">
+                          <ButtonIcon text="Cancelar"/>
+                    </div>
                 </div>
             </div>
           <Footer/>

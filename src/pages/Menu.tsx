@@ -7,7 +7,7 @@ export function Menu(){
         <div className=' flex-col items-center justify-center gap-12'> 
             <Link to='/projetos'> <ButtonMenu icon = {<TreeStructure/>}> Projetos</ButtonMenu> </Link>
             <Link to = '/usuarios'><ButtonMenu icon = {<UsersFour/>} >Colaboradores</ButtonMenu></Link>
-            <ButtonMenu icon = {<BookOpen/>}  notActive>Métricas</ButtonMenu>
+            <Link to = '/metricas'><ButtonMenu icon = {<BookOpen/>} >Métricas</ButtonMenu></Link>
             
         </div>
     )

@@ -28,7 +28,7 @@ export function UserCard({item} : UserCardProps){
                 <User size={24}/>
                 {item.nome} 
             </div>
-            <p className="h-6 resize-none w-full break-words overflow-hidden max-h-12 mt-3 px-6 font-sans text-md text-deep-blue break-word">{funcaoList[item.funcao|0].description}</p>
+            <p className="h-6 resize-none w-full break-words overflow-hidden max-h-12 mt-3 px-6 font-sans text-md text-deep-blue break-word">{funcaoList[item.funcao|0]?.description}</p>
             <div className="flex gap-2 font-sans text-xs place-items-end mt-1.5  text-deep-blue text-center break-word self-end pt-2">
                 <p className="mr-2 ml-4 text-center">
                     {'Modificado em '/*moment(item.updatedAt).format('DD/MM/YYYY' )+' às '+moment(item.updatedAt).format('HH:mm')*/}</p>
