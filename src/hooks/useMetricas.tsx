@@ -6,6 +6,7 @@ import { useAuth } from "./useAuth";
 
 export const HookMetricas = () =>{
     const [metricas,setMetricas] = useState<IMetricasData[]>([]);
+    const [singleMetrica, setSMetrica] = useState<IMetricasData>();
     const [querySearch,setQuerySearch] = useState<string>("");
     const [fieldSearch,setFieldSearch] = useState<string>("")
 
@@ -15,13 +16,15 @@ export const HookMetricas = () =>{
 
         if(status != 200) throw new Error();
         //console.log(data)
-        setMetricas(data);
+       // setMetricas(data);
         
     },[])
     const getById =  useCallback(async (id : any) =>{
         const {status, data} = await MetricsService.getById(id);
 
         if(status != 200) throw new Error();
+
+        setSMetrica(data);
 
     },[])
     const create =  useCallback(async (data : IMetricasData) =>{
@@ -62,5 +65,6 @@ export const HookMetricas = () =>{
         remove,
         search,
         metricas,
+        singleMetrica
     }
 }
