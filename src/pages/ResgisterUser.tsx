@@ -64,7 +64,7 @@ export function ResgisterUser(){
                     {user!==undefined ?<Text>{user.nome}</Text> : <Text>Novo Usuário</Text>}
                 </div>
                 <div className=" flex self-center w-full h-fit gap-20 pt-7 pb-10 ring-deep-blue ring-2 bg-bright-white">
-                    <div className=" flex flex-col justify-between gap-6 w-3/5">
+                    <div className=" flex flex-col justify-between gap-6 w-3/5 px-6">
                         
                         <TextInput label="Nome:"      
                                    txtValue={user!==undefined?user.nome:''} 
