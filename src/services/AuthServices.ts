@@ -26,5 +26,5 @@ export const AuthServices = {
     logout,
     signup,
     getTokenPassReset,
-    resetPassword
+    resetPassword,
 }

@@ -2,6 +2,7 @@ export * from "./Projects"
 export * from "./ComboBoxItems"
 export * from "./Usuarios"
 export * from "./LoginData"
+export * from "./Metricas"
 export * from  "./Rating"
 export * from "./Metricas"
 

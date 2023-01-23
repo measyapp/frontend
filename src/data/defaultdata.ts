@@ -1,5 +1,6 @@
 import { ComboBoxItem, IProjectData } from "../types";
 import { IMetricasData } from "../types/Metricas";
+import { IMetricasData } from "../types/Metricas";
 import { SearchItems } from "../types/SearchItems";
 
 export const OrderOptions = [
@@ -206,7 +207,30 @@ export const initialProjects = [
 
 export const Metricas : IMetricasData[] = [
     {
-        
+        export const Metricas : IMetricasData[] = [
+    {
+        "avaliacoes": 10,
+        "nome": "Metrica 1",
+        "nota": 4.67,
+        "descricao": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+    },
+    {
+        "avaliacoes": 10,
+        "nome": "Metrica 2",
+        "nota": 2.5,
+        "descricao": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+    },{
+        "avaliacoes": 10,
+        "nome": "Metrica 3",
+        "nota": 4,
+        "descricao": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+    },{
+        "avaliacoes": 10,
+        "nome": "Metrica 4",
+        "nota": 1.5,
+        "descricao": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+    },
+
         "id": 1,
         "tipo": "",
         "referencial": "WERKEMA, C. Lean Seis Sigma: Introdução às ferramentas do Lean Manufacturing. 1ª. ed. Belo Horizonte: Werkema Editora, v. 4, 2006.",
@@ -294,6 +318,7 @@ export const Metricas : IMetricasData[] = [
         "descricao": "As análises de vulnerabilidade identificam as falhas de segurança em um aplicativo. Quanto menor for o número de vulnerabilidades encontradas, mais seguro é o software.."
     },
 
+]
 ]
 
 

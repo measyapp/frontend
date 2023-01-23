@@ -55,11 +55,21 @@ export function RecuperaSenha(){
                             {envio.text}
                          </div>
                         }
+                        {(envio?.status!==200)&&((envio?.status!==0))&&<div className="h-fit flex gap-2 text-sm p-2 rounded-lg flex-wrap mb-3 break-words text-incorrect-red place-items-center justify-center ring-incorrect-red ring-2">
+                            <Warning size={20}/>
+                            {envio.text}
+                         </div>
+                        }
+                        {(envio?.status===200)&&<div className="h-fit flex gap-2 text-sm p-2 rounded-lg flex-wrap mb-3 break-words text-correct-green place-items-center justify-center ring-correct-green ring-2">
+                            <Check size={20}/>
+                            {envio.text}
+                         </div>
+                        }
 
                     <TextInput mref = {emailRef} light icon={<Envelope size={25}/>}  placeholder="email@email.com" />
 
                     <div className=" flex flex-col w-full mt-5 rounded-2xl place-items-center">
-                        <ButtonIcon text="Enviar e-mail de recuperação de senha" onClickAlt={submitHandle}/>
+                        <ButtonIcon text="Enviar e-mail de recuperação de senha" onClickAlt={submitHandle} onClickAlt={submitHandle}/>
                     </div>
                    
                </div>

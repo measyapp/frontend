@@ -14,8 +14,11 @@ export function  AppRoutes () {
       <Route path="/usuarios/cadastro" element={<ResgisterUser/>} />
       <Route path='/recuperarsenha' element={<RecuperaSenha/>}/>
       <Route path='/redefineSenha/:token' element= {<RedefineSenha/>}/>
+      <Route path='/redefineSenha/:token' element= {<RedefineSenha/>}/>
       <Route path='/avaliacao/:id' element= {<RegisterRating/>}/>
       <Route element={<RequireAuth/>}>
+        <Route path="/metricas" element={<MetricasList/>} />
+        <Route path="/metricas/:id" element={<MetricaFile/>} />
         <Route path="/metricas" element={<MetricasList/>} />
         <Route path="/metricas/:id" element={<MetricaFile/>} />
         <Route path="/projetos" element={<ProjectList/>} />    
