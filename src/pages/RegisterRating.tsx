@@ -1,7 +1,7 @@
 import { Rating } from "@mui/material";
 import { ButtonIcon, Text,TextInput } from "../components";
 import { createRef, useState } from "react";
-import { useParams } from "react-router";
+import { useNavigate, useParams } from "react-router";
 import { IRatingData } from "../types";
 import { HookRatings} from "../hooks"
 export function RegisterRating(){
@@ -10,6 +10,8 @@ export function RegisterRating(){
     const [nota,setNota] = useState<number>(0);
     const notaRef = createRef<any>();
     const comentarioRef = createRef<any>();
+    const navigator = useNavigate();
+
 
     const OnClickSaveHandle = (e : Event)=>{
         console.log(notaRef.current.value);
@@ -25,7 +27,7 @@ export function RegisterRating(){
         }
 
         create(newRating);
-        
+        navigator("/metricas");
         
     }
     return (

@@ -46,5 +46,6 @@ export const HookRatings = () =>{
         update,
         getById,
         remove,
+        ratings
     }
 }

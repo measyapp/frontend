@@ -69,7 +69,7 @@ export function RecuperaSenha(){
                     <TextInput mref = {emailRef} light icon={<Envelope size={25}/>}  placeholder="email@email.com" />
 
                     <div className=" flex flex-col w-full mt-5 rounded-2xl place-items-center">
-                        <ButtonIcon text="Enviar e-mail de recuperação de senha" onClickAlt={submitHandle} onClickAlt={submitHandle}/>
+                        <ButtonIcon text="Enviar e-mail de recuperação de senha" onClickAlt={submitHandle}/>
                     </div>
                    
                </div>
