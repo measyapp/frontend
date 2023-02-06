@@ -10,6 +10,8 @@ import { useFormValidation } from "../formValidation/useFormValidation";
 import youtube_logo from "../images/youtube_logo.svg";
 import formula from "../images/formula.svg";
 import { number } from "yup/lib/locale";
+import { EvaluationForm } from "./EvaluationForm";
+import { createPortal } from "react-dom";
 
 export function MetricaFile(){
     const {id} = useParams();
@@ -65,7 +67,6 @@ export function MetricaFile(){
                         <div className="flex place-items-center justify-center">
                             <Text size="lg">Assista ao tutorial da métrica</Text>
                         </div>
-                        
                     </div>
                 </div>
             </div>
