@@ -31,6 +31,9 @@ module.exports = {
       spacing:{
         '98': '25rem'
       },
+      screens:{
+        'xs': '1px'
+      },
       width:{
         '400': '400px',
         '500': '500px',

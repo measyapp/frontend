@@ -35,11 +35,11 @@ export function Login(){
     }
   }
     return(
-      <div  className=" flex flex-col text-deep-blue gap-1 justify-between h-screen place-items-center">
+      <div  className=" flex flex-col min-w-min	 text-deep-blue gap-1 justify-between h-screen w-full place-items-center">
         <Header/>
-        <div className="flex gap-44 place-items-center">
-            <img src={logo} width={587} />
-            <div className="flex-col w-500 h-fit pt-6 pb-6 pl-5 pr-10  rounded-3xl gap-3 ring-2 ring-deep-blue shadow-md">
+        <div className="flex xs:gap-10 shrink-0 lg:gap-44 place-items-center xs:flex-col lg:flex-row min-xs:xs">
+            <img src={logo} className="xs:w-64 lg:w-600" />
+            <div className="flex-col lg:w-400 xs:w-94 h-fit pt-6 pb-6 pl-5 pr-10 max-w-400 rounded-3xl gap-3 ring-2 ring-deep-blue shadow-md">
               {/*Linha de exibição de erro no login*/}
               {error.length>0&&<div className="h-fit ml-5 flex gap-2 text-sm p-3 rounded-lg flex-wrap mb-3 break-words text-incorrect-red place-items-center justify-center ring-incorrect-red ring-2">
                   <Warning size={20}/>

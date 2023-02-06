@@ -14,7 +14,7 @@ export function Header({children, clean=false}: HeaderProps){
     const {logout,isLogged} = useAuth();
     const navegador = useNavigate();
     return (
-        <div className='flex h-16 w-screen justify-between place-items-center bg-deep-blue px-10 text-bright-white items-center'>
+        <div className='flex h-16 w-full justify-between place-items-center bg-deep-blue px-10 text-bright-white items-center'>
             <div className="flex items-center" >
                 <Link to=".." relative="route">
                     <CardButton icon={<HiChevronLeft size={39}/>}/> 

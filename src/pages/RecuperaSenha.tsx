@@ -30,9 +30,9 @@ export function RecuperaSenha(){
     return (
         <div className=" flex flex-col text-deep-blue gap-1 justify-between h-screen place-items-center">
             <Header/>
-            <div className=" flex ring-deep-blue gap-12 px-10 ring-2 w-900 h-fit pb-6 rounded-3xl">
+            <div className="flex xs:flex-col lg:flex-row xs:place-items-center   ring-deep-blue gap-12 xs:gap-0 lg:px-10 xs:px-5 ring-2 lg:w-900 xs:w-98 h-fit pb-6 rounded-3xl">
                <img src={logo} width={228} />
-               <div className="flex flex-col gap-4 ml-5 mt-16">
+               <div className="flex flex-col gap-4 lg:ml-5 xs:ml-3 mt-16">
                     
                     <div className="flex gap-2 place-items-center">
                         <Key size={24} stroke="2"/>
