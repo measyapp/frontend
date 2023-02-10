@@ -21,7 +21,7 @@ export function ResgisterUser(){
     const senha = createRef<any>();
     const confirmasenha = createRef<any>();
     const {create,user,getById,update} = HookUsers();
-    const {signup} = useAuth();
+    const {signup,success} = useAuth();
     
     const navigate = useNavigate();
     const { validateError,handleErrorMessage} = useFormValidation<IUserData>('validateUser');
@@ -44,15 +44,18 @@ export function ResgisterUser(){
             senha: senha.current.value,
         }
         const result = await validateError(newUser);
+        let success;
         if (result){
             if (id===undefined){
                 signup(newUser);
             }else {
                 update(+id,newUser);
             }
+           if (success) {
             navigate('/');
             window.location.reload();
-        }
+            }  
+        }        
     }
     return(
 

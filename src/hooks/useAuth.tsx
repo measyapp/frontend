@@ -1,4 +1,4 @@
-import { useCallback, useContext} from "react"
+import { useCallback, useContext, useState} from "react"
 import { AuthServices } from "../services"
 import { IUserData, LoginData } from "../types";
 import AuthContext from "../context/AuthProvider";
@@ -10,6 +10,7 @@ import jwt_decode from "jwt-decode"
 export const useAuth = () =>{
     
     //const [authorized,setAuthorized] = useState<boolean>(false)
+    var success = false; 
     const isLogged = ()=>{
         const token = authToken()
         if(token==='') return false;
@@ -23,6 +24,7 @@ export const useAuth = () =>{
         return !isExpired;
     }
     const login =  useCallback(async (Ldata : LoginData) =>{
+       
         const {status,data} = await AuthServices.login(Ldata);
         console.log(data);
        if(status === 200) {
@@ -38,7 +40,10 @@ export const useAuth = () =>{
         localStorage.removeItem('user');
     },[])
     const signup =  useCallback(async (data : IUserData) =>{
+        success = false;
         const {status} = await AuthServices.signup(data);
+        if(status != 200) throw new Error();
+        else success = true;
 
     },[])
 
@@ -58,6 +63,7 @@ export const useAuth = () =>{
         signup,
         isLogged,
         getTokenPassReset,
-        resetPassword
+        resetPassword,
+        success
     }
 }

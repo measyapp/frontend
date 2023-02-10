@@ -9,7 +9,7 @@ export const HookMetricas = () =>{
     const [singleMetrica, setSMetrica] = useState<IMetricasData>();
     const [querySearch,setQuerySearch] = useState<string>("");
     const [fieldSearch,setFieldSearch] = useState<string>("")
-
+    const [metricasRank, setMrank] = useState<IMetricasData[]>([]);
 
     const getAll =  useCallback(async () =>{
         const {status, data} = await MetricsService.getAll();
@@ -44,13 +44,15 @@ export const HookMetricas = () =>{
         setQuerySearch(Parameter);
         setFieldSearch(Field);
     }
-    const order = (Field : any)=>{
+    const ranking = (Field : any)=>{
         //setMetrics(projects.sort());
-        setMetricas(metricas.sort((a,b)=>{ 
-           if (a.nome === undefined ) return -1
-           if (b.nome === undefined ) return 1
-           return  (a.nome) > (b.nome) ? 1:-1
-        }));
+        const nMetricas = metricas; 
+        nMetricas.sort((a,b)=>{ 
+           if (a.nota === undefined ) return -1
+           if (b.nota === undefined ) return 1
+           return  (a.nota) > (b.nota) ? 1:-1
+        });
+        setMrank(nMetricas.slice(0,3));
     }
     const remove = useCallback(async (id : number) =>{
         const {status}= await MetricsService.remove(id);
