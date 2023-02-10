@@ -40,10 +40,8 @@ export const useAuth = () =>{
         localStorage.removeItem('user');
     },[])
     const signup =  useCallback(async (data : IUserData) =>{
-        success = false;
         const {status} = await AuthServices.signup(data);
-        if(status !== 201) throw new Error();
-        else success = true;
+        if(status !== 201) { alert("Falha Criando Usuário. Tente Novamente"); throw new Error();};
 
     },[])
 

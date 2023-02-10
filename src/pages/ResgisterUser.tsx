@@ -50,13 +50,9 @@ export function ResgisterUser(){
             }else {
                 await update(+id,newUser);
             }
-           if (success) {
-                navigate('/');
-                window.location.reload();
-           }
-           else {
-            alert("Erro Criando Usuário. Tente Novamente")
-           }  
+            navigate('/');
+            window.location.reload();
+            
         }        
     }
     return(
