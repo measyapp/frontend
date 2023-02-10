@@ -42,7 +42,7 @@ export const useAuth = () =>{
     const signup =  useCallback(async (data : IUserData) =>{
         success = false;
         const {status} = await AuthServices.signup(data);
-        if(status != 200) throw new Error();
+        if(status != 201) throw new Error();
         else success = true;
 
     },[])
