@@ -44,7 +44,6 @@ export function ResgisterUser(){
             senha: senha.current.value,
         }
         const result = await validateError(newUser);
-        let success;
         if (result){
             if (id===undefined){
                 signup(newUser);
@@ -52,9 +51,12 @@ export function ResgisterUser(){
                 update(+id,newUser);
             }
            if (success) {
-            navigate('/');
-            window.location.reload();
-            }  
+                navigate('/');
+                window.location.reload();
+           }
+           else {
+            alert("Erro Criando Usuário. Tente Novamente")
+           }  
         }        
     }
     return(
