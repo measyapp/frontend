@@ -46,9 +46,9 @@ export function ResgisterUser(){
         const result = await validateError(newUser);
         if (result){
             if (id===undefined){
-                signup(newUser);
+                await signup(newUser);
             }else {
-                update(+id,newUser);
+                await update(+id,newUser);
             }
            if (success) {
                 navigate('/');
