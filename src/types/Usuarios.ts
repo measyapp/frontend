@@ -18,7 +18,7 @@ export const validateUser = Yup.object().shape({
     email: Yup.string().required("Campo Obrigatório").
               email("Email inválido"),
     cpf:   Yup.string().required("Campo Obrigatório").
-            matches(/[0-9]{3}\.?[0-9]{3}\.?[0-9]{3}\-?[0-9]{2}/,"Formato de cpf inválido"),
+            matches(/[0-9]{3}\.[0-9]{3}\.[0-9]{3}\-[0-9]{2}/,"Formato de cpf inválido"),
     senha: Yup.string().required("Campo Obrigatório")
            .min(6,"A senha deve conter no mínimo 6 caracteres"),
    
