@@ -23,7 +23,10 @@ export function RegisterRating(){
             id_autor: 1,
             id_indicacao:1,
             nota : nota,
-            comentario: comentarioRef.current.value
+            comentario: comentarioRef.current.value,
+            updatedAt : new Date(),
+            createdAt : new Date(),
+
         }
 
         create(newRating);

@@ -45,6 +45,8 @@ export function ResgisterProject(){
             tipo: tipoRef.current.value,
             tamanho: tamanhoRef.current.value,
             gerente: gerenteRef.current.value,
+            createdAt: new Date(),
+            updatedAt: new Date()
         }
         const result = await validateError(newProject);
         if(result){

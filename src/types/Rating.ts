@@ -6,6 +6,6 @@ export interface IRatingData {
     createdAt : Date,
     updatedAt: Date,
     comentario: string,
-    nome_autor: string;
+    nome_autor?: string;
 }
 
