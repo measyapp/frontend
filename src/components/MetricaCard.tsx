@@ -18,6 +18,7 @@ export function MetricaCard({item} : MetricaCardProps){
     const metricaInfo=()=>{
         navigator(`/metricas/${item.id}`);
     }
+   // item.nota = Math.random()*5; 
     return(
         <div className="h-fit w-96 m-3 bg-bright-white gap- overflow-hidden ring-deep-blue ring-2 rounded-xl">
             <div className="bg-deep-blue h-10  font-sans text-lg text-bright-white text-center py-1">
@@ -26,7 +27,11 @@ export function MetricaCard({item} : MetricaCardProps){
             <p className="h-12 resize-none w-full break-words overflow-hidden max-h-12 mt-3 px-6 font-sans text-md text-deep-blue text-cente break-word"> {item.descricao}</p>
             <div className="flex gap-2 px-4 font-sans text-xs mt-1.5  text-deep-blue text-center break-word self-end  justify-between">
                 <div className="flex flex-col gap-1.5 py-2 place-items-center justify-center">
-                    <Rating name={"Nota"} value={Math.random()*5} readOnly precision={0.5}/>
+                    <div className="flex gap-3">
+                       <Rating name={"Nota"} value={item.nota} readOnly precision={0.5}/>
+                       {item.nota?.toLocaleString('pt-BR',{minimumFractionDigits: 2,maximumFractionDigits :2})}
+                    
+                    </div>
                     <p className="text-center">{item.avaliacoes+" avaliações"}</p>
                 </div>
                 <div  className="flex place-items-center justify-center ">

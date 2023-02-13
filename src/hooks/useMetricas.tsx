@@ -15,8 +15,24 @@ export const HookMetricas = () =>{
         const {status, data} = await MetricsService.getAll();
 
         if(status != 200) throw new Error();
-        console.log(data)
+        //console.log(data)
+        data.forEach((imetrica,index)=>{
+            if(imetrica.nota ===undefined){
+                imetrica.nota=Math.random()*5; 
+            }
+            if(imetrica.avaliacoes===undefined){
+                imetrica.avaliacoes=Math.floor(Math.random()*200)
+            }
+        });
+        ranking(data);
+        
+        data.sort((a,b)=>{
+            return a.nome.localeCompare(b.nome);
+        });
         setMetricas(data);
+        
+        //console.log(data)
+        
         
     },[])
     const getById =  useCallback(async (id : any) =>{
@@ -44,16 +60,16 @@ export const HookMetricas = () =>{
         setQuerySearch(Parameter);
         setFieldSearch(Field);
     }
-    const ranking = (Field : any)=>{
+    const ranking = useCallback( async (data : IMetricasData[]) =>{
         //setMetrics(projects.sort());
-        const nMetricas = metricas; 
-        nMetricas.sort((a,b)=>{ 
-           if (a.nota === undefined ) return -1
-           if (b.nota === undefined ) return 1
-           return  (a.nota) > (b.nota) ? 1:-1
+        data.sort((a,b)=>{ 
+           if ((a.nota === undefined )) return 1
+           if (b.nota === undefined ) return -1
+           return   b.nota - a.nota;
         });
-        setMrank(nMetricas.slice(0,3));
-    }
+        setMrank(data.slice(0,3));
+        //console.log(data.slice(0,3))
+    },[])
     const remove = useCallback(async (id : number) =>{
         const {status}= await MetricsService.remove(id);
         if (status != 200) throw new Error();
@@ -67,6 +83,8 @@ export const HookMetricas = () =>{
         remove,
         search,
         metricas,
-        singleMetrica
+        singleMetrica,
+        ranking,
+        metricasRank
     }
 }

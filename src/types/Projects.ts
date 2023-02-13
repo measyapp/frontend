@@ -8,8 +8,8 @@ export interface IProjectData{
   tipo: number
   tamanho: number
   gerente: string
-  createdAt?: string,
-  updatedAt?: string
+  createdAt: Date,
+  updatedAt: Date
   }
 
 export const validateProject = Yup.object().shape({

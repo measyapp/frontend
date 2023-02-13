@@ -10,6 +10,7 @@ export const HookRatings = () =>{
         const {status, data} = await RatingService.getAll();
 
         if(status != 200) throw new Error();
+        console.log(data);
         setRatings(data);
         
     },[])

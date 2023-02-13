@@ -1,18 +1,12 @@
 import {IMetricasData, IProjectData} from "../types"
 import { HookMetricas, HookProjects, HookRatings } from "../hooks";
-import { MdCancel}  from "react-icons/md"
 import { createRef, useEffect, useState} from "react";
-import { Graph,IdentificationBadge} from "phosphor-react";
 import { Link, useNavigate, useParams } from "react-router-dom";
-import {tiposList,metodologiasList,tamanhosList, Metricas} from "../data"
 import { ButtonIcon,ComboBox,Footer,Header,Text,TextInput } from "../components";
-import { useFormValidation } from "../formValidation/useFormValidation";
 import youtube_logo from "../images/youtube_logo.svg";
 import formula from "../images/formula.svg";
-import { number } from "yup/lib/locale";
-import { RegisterRating} from "./RegisterRating";
-import { createPortal } from "react-dom";
 import { RatingCard } from "../components/RatingCard";
+import { Rating } from "@mui/material";
 
 export function MetricaFile(){
     const {id} = useParams();
@@ -23,14 +17,14 @@ export function MetricaFile(){
     const navigate = useNavigate();
 
     useEffect( ()=>{
-        tId =id!==undefined?+id-1:-1;
+        tId =id!==undefined?+id:-1;
         getById(tId);
         getAll();
     },[])
     return(
         <div  className=" flex flex-col text-deep-blue gap-3 justify-between h-screen place-items-center">
             <Header/>
-            <div className="flex flex-col gap-5 w-fit h-fit place-items-center justify-center">
+            <div className="flex gap-3 w-fit h-fit justify-center place-items-center">
                 <div className="flex flex-col max-w-4xl min-w-max items-center w-9/12 h-fit">
                     <div className="justify-center items-center gap-3 w-full h-14 rounded-t-2xl ring-deep-blue ring-2 bg-deep-blue flex text-bright-white">
                     {singleMetrica&&singleMetrica.nome}
@@ -68,19 +62,26 @@ export function MetricaFile(){
                             <div className="flex place-items-center justify-center">
                                 <Text size="lg">Assista ao tutorial da métrica</Text>
                             </div>
-                            <div>
-                                <Link to={"/avaliacao/1"} ><ButtonIcon text="Avaliar Métrica"/></Link>
-                            </div>
+                           
                         </div>
                     </div>
                 </div>
                    
-                <div className="flex w-hd gap-10 py-10 ml-24 overflow-x-scroll h-600 place-items-start">
-                            {ratings&&ratings.map((irating,index)=>{
-                                return <RatingCard nota={irating.nota} comentario={irating.comentario}/>
-                            })
+                <div className="flex flex-col w-700 gap-5 ml-24 h-fit place-items-start ring-deep-blue ring-2 rounded-xl">
+                        <div className="justify-center items-center gap-3 w-full h-14 rounded-t-2xl ring-deep-blue ring-2 bg-deep-blue flex text-bright-white">
+                            {"Avaliações"}
+                        </div> 
+                        
+                        <div className="flex  flex-col gap-5 h-500 overflow-y-scroll w-full mt-3 py-3">
+                                    {ratings&&ratings.map((irating,index)=>{
+                                        return <RatingCard key={index} ratingItem={irating}/>
+                                    })
 
-                            }
+                                    }
+                        </div>
+                        <div className=" w-full p-3"> 
+                            <Link to={`/avaliacao/${id}`}><ButtonIcon text="Avaliar Métrica"/> </Link> 
+                        </div>
                 </div>          
             </div> 
                 
