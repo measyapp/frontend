@@ -25,7 +25,7 @@ export const HookUsers = () =>{
     const create =  useCallback(async (data : IUserData) =>{
         
         const {status}= await UserService.create(data);
-        if (status != 200) throw new Error();
+        if (status != 201) throw new Error();
 
     },[])
     const update =  useCallback(async (id: number,data : IUserData) =>{

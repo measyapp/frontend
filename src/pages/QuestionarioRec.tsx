@@ -4,7 +4,8 @@ import {recQuestionsPadrao} from "../data"
 import { ButtonIcon,ComboBox,Footer,Header,Text,TextInput } from "../components";
 import { Graph } from "phosphor-react";
 import { HookRecomendacao } from "../hooks/useRecomendacao";
-import {useState} from "react"
+import {useEffect, useState} from "react"
+import useEnhancedEffect from "@mui/utils/useEnhancedEffect";
 
 
 export function QuestionarioRec(){
@@ -13,11 +14,11 @@ export function QuestionarioRec(){
     const {getIndicacao} = HookRecomendacao();
     const [loading, setLoading] = useState<boolean>(false);
     var recQuestions = recQuestionsPadrao;
-    
+   
     const onChangeValue = (event: any)=> {
-        console.log("Q-"+event.target.name+" "+event.target.value);
+        //console.log("Q-"+event.target.name+" "+event.target.value);
         recQuestions[+event.target.name].value = event.target.value;
-        console.log(recQuestions);
+        //console.log(recQuestions);
       }
       const navegador = useNavigate();
     const getRecomendation = async ()=>{
@@ -33,7 +34,7 @@ export function QuestionarioRec(){
        
     }
     return(
-        <div  className=" flex flex-col text-deep-blue gap-3 justify-between h-fit place-items-center">
+        <div id={'page_'} className=" flex flex-col text-deep-blue gap-3 justify-between h-fit place-items-center" >
             
             <Header/>
             <div className="flex flex-col max-w-4xl min-w-max items-center w-700 h-2/3">

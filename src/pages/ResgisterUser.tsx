@@ -15,10 +15,13 @@ export function ResgisterUser(){
     const {id} = useParams();
     const nome = createRef<any>();
     const cpf = createRef<any>();
-    const [funcao, setFuncao] = useState<number>(0);
+    const [afuncao, setFuncao] = useState<number>(0);
+    const [loading, setLoading] = useState<boolean>(false);
+    
     const telefone = createRef<any>();
     const email = createRef<any>();
     const senha = createRef<any>();
+    const funcaoRef = createRef<any>();
     const confirmasenha = createRef<any>();
     const {create,user,getById,update} = HookUsers();
     const {signup,success} = useAuth();
@@ -30,20 +33,24 @@ export function ResgisterUser(){
         if((id!==undefined)&&(user===undefined)){
             getById(id);
         }else if (user!==undefined){
-            setFuncao(user.funcao);
+
         }   
     },[user]);
     
     const SaveUser = async ()=>{
+        //console.log(afuncao);
+        //console.log(funcaoRef.current.value);
+        
         const newUser : IUserData = {
             id: id===undefined? 0:(id as unknown as number),
             nome: nome.current.value,
             cpf: cpf.current.value,
-            funcao: funcao,
+            funcao: funcaoRef.current.value,
             email: email.current.value,
-            senha: senha.current.value,
+            senha: (confirmasenha.current.value as string)!==""?confirmasenha.current.value:senha.current.value,
             updatedAt: new Date()
         }
+        setLoading(true);
         const result = await validateError(newUser);
         if (result){
             if (id===undefined){
@@ -52,9 +59,8 @@ export function ResgisterUser(){
                 await update(+id,newUser);
             }
             navigate('/');
-            window.location.reload();
-            
         }        
+        setLoading(false);
     }
     return(
 
@@ -80,11 +86,18 @@ export function ResgisterUser(){
                                    {...handleErrorMessage("email")}/>
                         <TextInput label="Senha:" 
                                    senha   
-                                   txtValue={user!==undefined?user.senha:''} 
+                                   //txtValue={user!==undefined?user.senha:''} 
                                    placeholder="*********" 
                                    mref={senha}
                                    {...handleErrorMessage("senha")}
                                    />
+                        {user!==undefined&&<TextInput label="Nova senha:" 
+                                   senha   
+                                   //txtValue={user!==undefined?user.senha:''} 
+                                   placeholder="*********" 
+                                   mref={confirmasenha}
+                                   {...handleErrorMessage("senha")}
+                                   />}
                         
                     </div>
 
@@ -100,13 +113,13 @@ export function ResgisterUser(){
                                    placeholder="99 99999-9999" 
                                    mref={telefone}
                                   />
-                        <ComboBox label="Função:" items={funcaoList} selected={funcao} selectionAction={(e:any)=>{setFuncao(e);}}/>
+                        <ComboBox label="Função:" mref={funcaoRef} items={funcaoList} selected={afuncao} selectionAction={(e:any)=>{setFuncao(e);}}/>
                     </div>
                     
                 </div>
                 <div className=" w-full h-20  flex gap-7 justify-center rounded-b-2xl place-items-center ring-deep-blue ring-2 bg-bright-white">
                 <div className="w-52">
-                       <ButtonIcon onClickAlt={SaveUser} text="Gravar Usuário"/>
+                       <ButtonIcon onClickAlt={SaveUser} isLoading={loading} text="Gravar Usuário"/>
                     </div>
                     <div className="w-52">
                           <ButtonIcon text="Cancelar"/>

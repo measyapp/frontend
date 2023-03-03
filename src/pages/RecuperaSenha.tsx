@@ -10,7 +10,7 @@ export function RecuperaSenha(){
     const emailRef = createRef<any>();
     const submitHandle = async()=>{
         const token = await getTokenPassReset(emailRef.current.value);
-        console.log((token as string).replace('.','*dot*'));
+        //console.log((token as string).replace('.','*dot*'));
         setEnvio({status: 0, text: ""});
         if (token&&token.length>0){
             const SERVICE_ID = process.env.EMAIL_SERVICE||"EMAIL_SERVICE"
@@ -19,7 +19,7 @@ export function RecuperaSenha(){
                     token:   process.env.APP_URL+"/redefineSenha/"+(token as string).replaceAll('.','*dot*'),
                     to_email: emailRef.current.value            
             },process.env.EMAIL_PKEY);
-            console.log(result.status);
+            //console.log(result.status);
             setEnvio({status: 200, text: "Email de recuperação enviado. Consulte sua caixa de entrada" } as EmailJSResponseStatus);
         }else{
             setEnvio({status: 404, text: "Conta não encontrada"} as EmailJSResponseStatus)
