@@ -1,7 +1,7 @@
 
 import {Api} from "../providers"
 import { IRatingData } from "../types"
-import { authToken } from "./AuthToken";
+import { authToken } from "./utils";
    
 const getAll =  () => {
     const token = authToken();

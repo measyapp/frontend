@@ -1,7 +1,7 @@
 
 import {Api} from "../providers"
 import { IUserData } from "../types"
-import { authToken } from "./AuthToken";
+import { authToken } from "./utils";
 
 const getAll =  () => {
   
@@ -21,7 +21,7 @@ const create = (data : IUserData)=> {
   
   const token = authToken();
   if (token!=='') Api.defaults.headers['x-access-token'] = token; 
-  return Api.post<IUserData>("/colaboradores",data);
+  return Api.post<any>("/colaboradores",data);
 }
 const update = (id : number,data :IUserData)=>{
   const token = authToken();

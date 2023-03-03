@@ -3,7 +3,7 @@ import { AuthServices } from "../services"
 import { IUserData, LoginData } from "../types";
 import AuthContext from "../context/AuthProvider";
 import { AuthContextType } from "../types/AuthContextType";
-import { authToken } from "../services/AuthToken";
+import { authToken } from "../services/utils";
 import jwt_decode from "jwt-decode"
 
 

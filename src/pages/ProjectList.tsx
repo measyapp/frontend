@@ -9,14 +9,26 @@ export function ProjectList(){
   const { projects,getAll,search,order} = HookProjects();  
   const [querySearch,setQuerySearch] = useState<string>("");
   const [fieldSearch,setFieldSearch] = useState<string>("");
-
+  const [fieldOrder, setFieldOrder] = useState<string>("");
   
   const filteredProjects = useMemo(()=>{
     return projects.filter(item =>{
         return item.nome.toLocaleLowerCase().includes(querySearch.toLocaleLowerCase());    
-    });
+    })
   },[projects,querySearch,fieldSearch]) 
-
+  const orderedProjects = useMemo(()=>{
+    return filteredProjects.sort((a,b)=>{
+      /*if (fieldOrder === 'nome'){
+        */  return a.nome.localeCompare(b.nome)
+      //}
+      /*else if (fieldOrder === 'updatedAt') {
+          return   b?.updatedAt - a.updatedAt
+      }*/
+    return a.nome.localeCompare(b.nome);  
+    })
+      
+      
+  },[filteredProjects,fieldOrder])
 
     useEffect(()=>{
       getAll();
@@ -27,12 +39,12 @@ export function ProjectList(){
             
             <div className="flex flex-col gap-1">
                 <Header/>
-             <ListHeader addButton addButtonText={"Novo Projeto"} OnSerching={(e : string,field :string)=>{setQuerySearch(e);setFieldSearch(field)}} OnOrder={order} listObjectName={"projeto"} searchItems={projectSearchable} buttonLink="/projetos/cadastro"/>
+             <ListHeader addButton addButtonText={"Novo Projeto"} OnSerching={(e : string,field :string)=>{setQuerySearch(e);setFieldSearch(field)}} OnOrder={(e: string,asc:boolean)=>{setFieldOrder(e)}} listObjectName={"projeto"} searchItems={projectSearchable} buttonLink="/projetos/cadastro"/>
             </div>
 
             <div className=" h-3/4 flex gap-2 mx-14 mt-2 mb-1 flex-wrap overflow-y-scroll max-w-full">
-                { (filteredProjects.length>0) &&
-                  filteredProjects.map((iproject,index)=>(
+                { (orderedProjects.length>0) &&
+                  orderedProjects.map((iproject,index)=>(
                     <ProjectCard key = {(iproject.id*3 + index).toString()} item = {iproject}/>
                 ))
                 }

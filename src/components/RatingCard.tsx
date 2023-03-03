@@ -2,6 +2,7 @@
 import { Rating } from "@mui/material";
 import {Text,ButtonIcon,TextInput} from "."
 import { IRatingData } from "../types";
+import { Item } from "@radix-ui/react-dropdown-menu";
 export interface RatingCardProps{
     
     ratingItem : IRatingData|undefined;
@@ -14,9 +15,9 @@ export function RatingCard({ratingItem}:RatingCardProps){
 
     return (
             <div className=" flex flex-col  self-center p-3 w-400 h-fit min-h-fit gap-3 pb-3 ring-deep-blue rounded-2xl ring-2 bg-bright-white">
-                <div className=" font-bold flex gap-16">
-                    {"Nome do usuário"}
-                    <div className=" w-16"></div>
+                <div className=" font-bold flex gap-16 full">
+                    {ratingItem?.nome}
+                    <div className="w-2"></div>
                     {ratingItem&&new Date(ratingItem.createdAt?ratingItem.createdAt:0).toLocaleString('pt-BR',dateOptions).toLowerCase()}
                 </div>
                 <div className=" flex text-deep-blue px-3 align-middle gap-3 full">

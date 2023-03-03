@@ -20,8 +20,7 @@ export function RegisterRating(){
 
         const newRating : IRatingData = {
             id: 0,
-            id_autor: 1,
-            id_indicacao:1,
+            id_indicacao:id===undefined?0:+id,
             nota : nota,
             comentario: comentarioRef.current.value,
             updatedAt : new Date(),

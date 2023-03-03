@@ -4,7 +4,7 @@ import {Api} from "../providers"
 import { IProjectData } from "../types"
 //import { AuthContextType } from "../types/AuthContextType";
 import { Header } from "../components";
-import { authToken } from "./AuthToken";
+import { authToken } from "./utils";
 //import { getToken } from "./getToke";
 
 //const {token} = useContext(AuthContext) as AuthContextType;

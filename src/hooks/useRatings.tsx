@@ -1,5 +1,5 @@
 import { useCallback, useState } from "react"
-import { RatingService } from "../services"
+import { RatingService,getLoggedId } from "../services"
 import { IRatingData } from "../types"
 import { useAuth } from "./useAuth";
 
@@ -22,10 +22,14 @@ export const HookRatings = () =>{
     },[])
     
     const create =  useCallback(async (data : IRatingData) =>{
-        const {status}= await RatingService.create(data);
-
-        if (status != 200) throw new Error();
-        else console.log("Sucesso");
+        const idAutor = getLoggedId();
+        if (idAutor > 0){
+            const {status}= await RatingService.create({...data, id_autor: idAutor});
+            if (status != 200) throw new Error();
+        }
+            else{
+               throw new Error("Falha incluindo avaliação. Informações do usuário inválidas");
+            } 
 
     },[])
     const update =  useCallback(async (id: number,data : IRatingData) =>{

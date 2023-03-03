@@ -5,19 +5,24 @@ import { SearchItems } from "../types/SearchItems";
 export const OrderOptions = [
     {
         "description": "Data de Moficação",
-        "field": "data_alt"
+        "field": "updatedAt",
+        "value": 1,
     }, 
     {
         "description": "Ordem Alfabeticas (A-Z)",
-        "field": "nome asc" 
+        "field": "nome",
+        "value": 2
     },{
         "description": "Ordem Alfabeticas (Z-A)" ,
-        "field": "nome desc" 
+        "field": "nome"
+        ,"value": 3,
+        "asc": false 
     },{
         "description": "Data de criação",
-        "field": "nome asc"  
+        "field": "createdAt"
+        ,"value": 4,  
     },
-];
+] as ComboBoxItem[];
 export const tamanhosList = [
     { 
         "description": "Pessoal (até 2 pessoas)",

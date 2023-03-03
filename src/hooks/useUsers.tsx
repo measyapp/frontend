@@ -1,5 +1,5 @@
 import { useCallback, useState } from "react"
-import { UserService } from "../services"
+import { UserService, getLoggedId } from "../services"
 import { IUserData } from "../types"
 import { useAuth } from "./useAuth";
 
@@ -23,8 +23,8 @@ export const HookUsers = () =>{
     },[])
     
     const create =  useCallback(async (data : IUserData) =>{
+        
         const {status}= await UserService.create(data);
-
         if (status != 200) throw new Error();
 
     },[])

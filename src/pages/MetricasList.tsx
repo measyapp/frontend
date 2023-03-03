@@ -8,7 +8,7 @@ import {GiRank3} from "react-icons/gi"
 
 export function MetricasList(){
     const {getAll,metricas,ranking,metricasRank} = HookMetricas();
-    const nMetricas = Metricas.slice(0,3);
+    //const nMetricas = Metricas.slice(0,3);
 
     useEffect(()=>{
         getAll();

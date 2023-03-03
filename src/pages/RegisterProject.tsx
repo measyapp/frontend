@@ -39,7 +39,6 @@ export function ResgisterProject(){
         const newProject : IProjectData = {
             id: singleProject!==undefined?singleProject.id:0,
             nome: nomeRef.current.value,
-            id_criador: singleProject!==undefined?singleProject.id_criador:"1",
             descricao: descRef.current.value,
             metodologia: metodologiaRef.current.value,
             tipo: tipoRef.current.value,

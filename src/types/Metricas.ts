@@ -1,9 +1,9 @@
 
 export interface IMetricasData{
     id: number
-    avaliacoes?: number,
+    avaliacoes: number,
     nome: string,
-    nota?: number ,
+    nota: number ,
     descricao: string,
     referencial : string,
     tipo : string

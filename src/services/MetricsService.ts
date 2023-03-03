@@ -1,6 +1,6 @@
 import {Api} from "../providers"
 import {IMetricasData  } from "../types"
-import { authToken } from "./AuthToken";
+import { authToken } from "./utils";
 
 const getAll =  () => {
     const token = authToken();
