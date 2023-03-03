@@ -15,11 +15,10 @@ export function RedefineSenha(){
         else{
             setLoading(true);
             const ftoken = (token as string).replaceAll('*dot*','.');
-            const status = await resetPassword(passRef.current.value,ftoken);
+             await resetPassword(passRef.current.value,ftoken);
             setLoading(false);
-            console.log(status);
-            if (status===200){alert("Senha alterada com sucesso"); navigator("/login")}
-            else {alert("Falha alterando senha");}
+            //console.log(status);
+            
         }
     }
     return (
