@@ -6,14 +6,13 @@ import Rating from "@mui/material/Rating"
 import { useState } from "react";
 import { ButtonIcon } from "./ButtonIcon";
 import { Text } from "./Text";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export interface MetricaCardProps{
     item : IMetricasData;
 }
 
 export function MetricaCard({item} : MetricaCardProps){
-    const [nota,setNota] = useState<number>(0);
     const navigator = useNavigate();
     const metricaInfo=()=>{
         navigator(`/metricas/${item.id}`);
@@ -28,8 +27,8 @@ export function MetricaCard({item} : MetricaCardProps){
             <div className="flex gap-2 px-4 font-sans text-xs mt-1.5  text-deep-blue text-center break-word self-end  justify-between">
                 <div className="flex flex-col gap-1.5 py-2 place-items-center justify-center">
                     <div className="flex gap-3">
-                       <Rating name={"Nota"} value={item.nota} readOnly precision={0.5}/>
-                       {item.nota?.toLocaleString('pt-BR',{minimumFractionDigits: 2,maximumFractionDigits :2})}
+                    <Rating name={`Nota${item.id}`} value={+item.nota} readOnly precision={0.2}/>
+                       {Number(item.nota).toFixed(2).toString()}
                     
                     </div>
                     <p className="text-center">{item.avaliacoes+" avaliações"}</p>
@@ -37,7 +36,7 @@ export function MetricaCard({item} : MetricaCardProps){
                 <div  className="flex place-items-center justify-center ">
                     <button  className=" flex place-items-center justify-center hover:scale-110 ease-in-out" onClick={metricaInfo}>
                         <Text size="md">Mais detalhes</Text>
-                        <MdKeyboardArrowRight/>    
+                        <MdKeyboardArrowRight/>  
                     </button>
                 </div>
             </div>

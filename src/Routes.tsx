@@ -3,7 +3,7 @@ import './styles/globais.css'
 import {RequireAuth} from "./components";
 import { Routes, Route } from 'react-router-dom';
 import { AuthProvider } from './context/AuthProvider';
-import {Home,ProjectList,UserList,ResgisterUser,ResgisterProject, Login, RecuperaSenha, MetricasList,MetricaFile,RedefineSenha} from "./pages"
+import {Home,ProjectList,UserList,ResgisterUser,ResgisterProject, Login, RecuperaSenha, MetricasList,MetricaFile,RedefineSenha,QuestionarioRec} from "./pages"
 import {RegisterRating } from './pages/RegisterRating';
 
 export function  AppRoutes () {
@@ -15,7 +15,7 @@ export function  AppRoutes () {
       <Route path='/recuperarsenha' element={<RecuperaSenha/>}/>
       <Route path='/redefineSenha/:token' element= {<RedefineSenha/>}/>
       <Route path='/redefineSenha/:token' element= {<RedefineSenha/>}/>
-      <Route path='/avaliacao/:id' element= {<RegisterRating/>}/>
+      <Route path='/recomendacao/:id' element= {<QuestionarioRec/>}/>
       <Route element={<RequireAuth/>}>
         <Route path="/metricas" element={<MetricasList/>} />
         <Route path="/metricas/:id" element={<MetricaFile/>} />

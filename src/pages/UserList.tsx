@@ -1,7 +1,7 @@
 
 import { FaPencilAlt,FaTrash } from "react-icons/fa";
 import { Header, ProjectCard, ListHeader, Footer} from "../components";
-import { useEffect} from "react";
+import { useEffect, useMemo, useState} from "react";
 import { HookUsers } from "../hooks";
 import { IProjectData } from "../types";
 import { useNavigate } from "react-router-dom";
@@ -15,15 +15,33 @@ import { Graph,IdentificationBadge} from "phosphor-react";
 export function UserList(){
 const navigator = useNavigate();
 
- const {users, getAll,search} = HookUsers();  
-    useEffect(()=>{
-    getAll();
-  },[getAll]);
+const [querySearch,setQuerySearch] = useState<string>("");
+const [fieldSearch,setFieldSearch] = useState<string>("");
+const [fieldOrder, setFieldOrder] = useState<string>("");
+const {users, getAll} = HookUsers();  
+  const filteredUsers = useMemo(()=>{
+      return users.filter(item =>{
+          return item.nome.toLocaleLowerCase().includes(querySearch.toLocaleLowerCase());    
+      })
+    },[users,querySearch,fieldSearch]) 
 
-  const editUser = () =>{
-    //Falta colocar o ID
-    navigator('/usuarios/cadastro/:id');
-  }
+  const orderedUsers = useMemo(()=>{
+      //console.log(fieldOrder);
+     return filteredUsers.sort((a,b)=>{
+          if (fieldOrder === 'nome desc'){
+            return (-1)*a.nome.localeCompare(b.nome)
+          } else if (fieldOrder === 'updatedAt') {
+            return new Date(a.updatedAt) < new Date(b.updatedAt) ? 1 : -1
+           }
+          return a.nome.localeCompare(b.nome);  
+        })
+  },[filteredUsers,fieldOrder])
+
+  
+ 
+    useEffect(()=>{
+      getAll();
+    },[getAll]);
 
  return(
   
@@ -34,13 +52,13 @@ const navigator = useNavigate();
                 <Header>
                     <Text bold >Colaboradores</Text>
                 </Header>
-             <ListHeader addButton addButtonText={"Novo Colaborador"}  OnSerching={search} listObjectName={"colaborador"} buttonLink="/usuarios/cadastro"/>
+             <ListHeader addButton addButtonText={"Novo Colaborador"}  OnSerching={(e : string,field :string)=>{setQuerySearch(e);setFieldSearch(field)}} OnOrder={(e: string,asc:boolean)=>{setFieldOrder(e)}} listObjectName={"colaborador"} buttonLink="/usuarios/cadastro"/>
             </div>
 
             <div className=" h-3/4 flex gap-2 mx-14 mt-2 mb-1 flex-wrap overflow-y-scroll max-w-full">
-            { (users.length>0) &&
-                  users.map((iuser,index)=>(
-                    <UserCard key = {(iuser.id + index).toString()} item = {iuser}/>
+            { (orderedUsers.length>0) &&
+                  orderedUsers.map((iuser,index)=>(
+                    <UserCard key = {(index).toString()} item = {iuser}/>
                 ))
               }
             </div>

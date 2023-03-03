@@ -1,7 +1,7 @@
 export interface IRatingData {
     id:  number,
     id_autor?: number,
-    id_indicacao : number,
+    id_indicacao : number | string,
     nota: number,
     createdAt : Date,
     updatedAt: Date,

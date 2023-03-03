@@ -14,6 +14,11 @@ const getAll =  () => {
   if (token!=='') Api.defaults.headers['x-access-token'] = token;
   return  Api.get<IProjectData[]>("/projetos");
 }
+const getAllByUser =  (id : any) => {
+  const token = authToken();
+  if (token!=='') Api.defaults.headers['x-access-token'] = token;
+  return  Api.get<IProjectData[]>(`/projetos/ByUser/${id}`);
+}
 const getById=  (id : any) => {
   const token = authToken();
   if (token!=='') Api.defaults.headers['x-access-token'] = token;
@@ -37,6 +42,7 @@ const remove = (id: number) =>{
 //const post = 
 export const ProjectsService = {
     getAll,
+    getAllByUser,
     getById,
     create,
     update,

@@ -3,25 +3,21 @@ import { IMetricasData } from "../types/Metricas";
 import { SearchItems } from "../types/SearchItems";
 
 export const OrderOptions = [
-    {
-        "description": "Data de Moficação",
-        "field": "updatedAt",
-        "value": 1,
-    }, 
+    
     {
         "description": "Ordem Alfabeticas (A-Z)",
         "field": "nome",
         "value": 2
     },{
         "description": "Ordem Alfabeticas (Z-A)" ,
-        "field": "nome"
+        "field": "nome desc"
         ,"value": 3,
         "asc": false 
     },{
-        "description": "Data de criação",
-        "field": "createdAt"
-        ,"value": 4,  
-    },
+        "description": "Data de Moficação",
+        "field": "updatedAt",
+        "value": 1,
+    }, 
 ] as ComboBoxItem[];
 export const tamanhosList = [
     { 
@@ -297,6 +293,23 @@ export const Metricas : IMetricasData[] = [
         "descricao": "As análises de vulnerabilidade identificam as falhas de segurança em um aplicativo. Quanto menor for o número de vulnerabilidades encontradas, mais seguro é o software.."
     },
 
+]
+
+export const recQuestionsPadrao = [
+    {
+        "pergunta":"Quero saber se o projeto está atingindo os prazos de entrega",
+        "value": "0"
+    }
+    ,
+    { "pergunta":"Quero saber se as atividades críticas estão sendo entregues no prazo?","value": "0"},
+    { "pergunta":"Quero saber se as entregas estão acontecendo de forma sustentável e incremental?","value": "0"},
+    { "pergunta":"Quero saber se o esforço realizado pela equipe é condizente com o planejado?","value": "0"},
+    { "pergunta":"Quero saber se o escopo do projeto é claro para que a equipe possa desempenhar suas atividades?","value": "0"},
+    { "pergunta":"Quero saber se o cliente permanece engajado e satisfeito ao longo do projeto?","value": "0"},
+    { "pergunta":"Quero saber se os gastos do projeto estão indo ao encontro do orçamento e cronograma estimados?","value": "0"},
+    { "pergunta":"Quero saber se as mudanças no tamanho do produto e interface estão sob controle?","value": "0"},
+    { "pergunta":"Quero saber se os processos são eficientes o suficiente para ir ao encontro dos compromissos e objetivos planejados?","value": "0"},
+    { "pergunta":"Quero saber se o projeto está bom o suficiente para ser entregue ao cliente? Os problemas identificados estão sendo resolvidos?","value": "0"}
 ]
 
 

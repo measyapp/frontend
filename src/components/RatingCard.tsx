@@ -3,6 +3,7 @@ import { Rating } from "@mui/material";
 import {Text,ButtonIcon,TextInput} from "."
 import { IRatingData } from "../types";
 import { Item } from "@radix-ui/react-dropdown-menu";
+import { UserCircle } from "phosphor-react";
 export interface RatingCardProps{
     
     ratingItem : IRatingData|undefined;
@@ -14,9 +15,12 @@ export function RatingCard({ratingItem}:RatingCardProps){
     } ;
 
     return (
-            <div className=" flex flex-col  self-center p-3 w-400 h-fit min-h-fit gap-3 pb-3 ring-deep-blue rounded-2xl ring-2 bg-bright-white">
-                <div className=" font-bold flex gap-16 full">
-                    {ratingItem?.nome}
+            <div className=" flex flex-col  self-center p-3 w-400 h-fit min-h-fit gap-1 pb-3 ring-deep-blue rounded-2xl ring-2 bg-bright-white">
+                <div className=" font-bold flex full">
+                    <div className=" flex gap-4">
+                        <UserCircle size={24}/>
+                        {ratingItem?.nome}
+                    </div>
                     <div className="w-2"></div>
                     {ratingItem&&new Date(ratingItem.createdAt?ratingItem.createdAt:0).toLocaleString('pt-BR',dateOptions).toLowerCase()}
                 </div>
@@ -25,7 +29,7 @@ export function RatingCard({ratingItem}:RatingCardProps){
                     <Text>{ratingItem&&ratingItem.nota.toLocaleString('pt-BR',{minimumFractionDigits: 2})}</Text>                       
                 </div>
                 <div className=" flex justify-between gap-6 w-full h-fit m-3">
-                    <span className="px-3 font-semibold">
+                    <span className="px-3 font-semibold break-all">
                         {ratingItem&&ratingItem.comentario}
                     </span>
                                         

@@ -18,13 +18,13 @@ export function ProjectList(){
   },[projects,querySearch,fieldSearch]) 
   const orderedProjects = useMemo(()=>{
     return filteredProjects.sort((a,b)=>{
-      /*if (fieldOrder === 'nome'){
-        */  return a.nome.localeCompare(b.nome)
-      //}
-      /*else if (fieldOrder === 'updatedAt') {
-          return   b?.updatedAt - a.updatedAt
-      }*/
-    return a.nome.localeCompare(b.nome);  
+      if (fieldOrder === 'nome desc'){
+        return (-1)*a.nome.localeCompare(b.nome)
+      }
+      else if (fieldOrder === 'updatedAt') {
+          return new Date(a.updatedAt) < new Date(b.updatedAt) ? 1 : -1
+      }
+      return a.nome.localeCompare(b.nome);  
     })
       
       

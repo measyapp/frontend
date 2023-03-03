@@ -26,8 +26,7 @@ export const useAuth = () =>{
     const login =  useCallback(async (Ldata : LoginData) =>{
        
         const {status,data} = await AuthServices.login(Ldata);
-        console.log(data);
-       if(status === 200) {
+        if(status === 200) {
             localStorage.setItem('user',JSON.stringify(data));
         }
        
@@ -36,7 +35,6 @@ export const useAuth = () =>{
     
     const logout =  useCallback(async () =>{
         const {status} = await AuthServices.logout();
-        
         localStorage.removeItem('user');
     },[])
     const signup =  useCallback(async (data : IUserData) =>{

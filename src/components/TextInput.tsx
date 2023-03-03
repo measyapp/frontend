@@ -20,13 +20,13 @@ export interface TextInputProps{
 export function TextInput (props:TextInputProps){
     const [focused, setFocus] = useState<boolean>(false);
     return (
-        <div className={clsx('flex flex-col gap-2 w-full',{
+        <div className={clsx('flex flex-col gap-2 w-full ',{
                             '  text-deep-blue': !props.error, 
                             '  text-incorrect-red': props.error, 
         })}>
             {props.label&&<Text color='blue' bold size='lg'>{props.label}</Text>}
-            <div className={clsx('flex ring-2 overflow-hidden  rounded-xl w-full min bg-gray-100',
-                                {'h-40': props.richText,
+            <div className={clsx('flex ring-2 overflow-hidden  rounded-xl w-full bg-gray-100',
+                                {'h-28': props.richText,
                                  'h-11':!props.richText,
                                  ' ring-deep-blue': !props.error, 
                                  ' ring-incorrect-red': props.error, 

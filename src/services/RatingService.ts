@@ -14,6 +14,12 @@ const getById=  (id : any) => {
     
     return  Api.get<IRatingData>(`/ratings/${id}`);
 }
+const getAllByMetricaId=  (id : any) => {
+    const token = authToken();
+    if (token!=='') Api.defaults.headers['x-access-token'] = token;
+    
+    return  Api.get<IRatingData[]>(`/ratings/ByMetric/${id}`);
+}
 const create = (data : IRatingData)=> {
     const token = authToken();
     if (token!=='') Api.defaults.headers['x-access-token'] = token; 
@@ -36,4 +42,5 @@ export const RatingService = {
     create,
     update,
     remove,
+    getAllByMetricaId
 }

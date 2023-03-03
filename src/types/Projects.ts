@@ -1,15 +1,16 @@
 import *  as Yup from "yup"
 export interface IProjectData{
-  id: number
-  id_criador?: string
-  nome: string
-  descricao: string
-  metodologia: number
-  tipo: number
-  tamanho: number
-  gerente: string
-  createdAt: Date,
-  updatedAt: Date
+    id: number
+    id_criador?: string
+    nome: string
+    descricao: string
+    metodologia: number,
+    indicacao?: number,
+    tipo: number
+    tamanho: number
+    gerente: string
+    createdAt: Date,
+    updatedAt: Date
   }
 
 export const validateProject = Yup.object().shape({
