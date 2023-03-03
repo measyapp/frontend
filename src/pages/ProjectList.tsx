@@ -1,9 +1,11 @@
 
-import { Header, ProjectCard, ListHeader, Footer} from "../components";
+import { Header, ProjectCard, ListHeader, Footer,Text} from "../components";
 import { createRef, useEffect, useMemo, useState} from "react";
 import { HookProjects } from "../hooks";
 import { projectSearchable } from "../data";
 import { IProjectData } from "../types";
+import { BiSearch } from "react-icons/bi";
+import clsx from "clsx";
 export function ProjectList(){
   
   const { projects,getAll,search,order} = HookProjects();  
@@ -29,7 +31,6 @@ export function ProjectList(){
       
       
   },[filteredProjects,fieldOrder])
-
     useEffect(()=>{
       getAll();
     },[getAll]);
@@ -42,14 +43,18 @@ export function ProjectList(){
              <ListHeader addButton addButtonText={"Novo Projeto"} OnSerching={(e : string,field :string)=>{setQuerySearch(e);setFieldSearch(field)}} OnOrder={(e: string,asc:boolean)=>{setFieldOrder(e)}} listObjectName={"projeto"} searchItems={projectSearchable} buttonLink="/projetos/cadastro"/>
             </div>
 
-            <div className=" h-3/4 flex gap-2 mx-14 mt-2 mb-1 flex-wrap overflow-y-scroll max-w-full">
-                { (orderedProjects.length>0) &&
+            <div className={clsx("flex",
+                            {" h-3/4 flex gap-2 mx-14 mt-2 mb-1 flex-wrap overflow-y-scroll max-w-full": orderedProjects.length>0}
+                            )}>
+                { (orderedProjects.length>0)&&
                   orderedProjects.map((iproject,index)=>(
                     <ProjectCard key = {(iproject.id)} item = {iproject}/>
-                ))
-                }
+                )) }
                 
             </div>
+            { (orderedProjects.length===0)&&
+              <div className="flex flex-col place-items-center justify-center text-deep-blue place-self-center"><BiSearch size={48}/> <Text size="md">Nenhum Projeto foi encontrado</Text></div>
+              }
             <Footer/>
        </div>
     )

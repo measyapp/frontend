@@ -33,7 +33,7 @@ export function RankingCard({item,rank} : RankingCardProps){
                 <div className="flex gap-2 px-4 font-sans text-xs mt-1.5  text-deep-blue text-center break-word self-end  justify-between">
                     <div className="flex flex-col gap-1.5 py-2 place-items-center justify-center">
                     <div className="flex gap-3">
-                       <Rating name={`NotaR${item.id}`} value={item.nota} readOnly precision={0.2}/>
+                       <Rating name={`NotaR${item.id}`} value={+item.nota} readOnly precision={0.2}/>
                        {Number(item.nota).toFixed(2).toString()}
                     
                     </div>

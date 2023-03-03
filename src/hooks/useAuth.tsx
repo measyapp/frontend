@@ -38,6 +38,7 @@ export const useAuth = () =>{
     const logout =  useCallback(async () =>{
         const {status} = await AuthServices.logout();
         localStorage.removeItem('user');
+        navigator("/login");
     },[])
     const signup =  useCallback(async (edata : IUserData) =>{
         const {status,data} = await AuthServices.signup(edata);

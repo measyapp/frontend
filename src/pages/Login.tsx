@@ -3,7 +3,7 @@ import { Link, useNavigate,useLocation } from "react-router-dom";
 import logo from "../images/logo.svg";
 import { Envelope, Keyhole, Warning} from "phosphor-react";
 import { useAuth } from "../hooks/useAuth";
-import { createRef, useState } from "react";
+import { createRef, useRef, useState } from "react";
 import { LoginData } from "../types";
 import { useFormValidation } from "../formValidation/useFormValidation";
 
@@ -14,25 +14,28 @@ export function Login(){
   const location = useLocation();
 
   const from = location.state?.from?.pathname||"/";
-  const emailRef = createRef<any>();
-  const passRef = createRef<any>();
+  const emailRef = useRef<any>("");
+  const passRef = useRef<any>("");
 
   const [error,setError] = useState<string>("");
-  
+  const [loading, setLoading] = useState<boolean>(false);
   const {validateError,handleErrorMessage,clearErrors} = useFormValidation<LoginData>('validateLogin');
 
   const onSubmit= async ()=>{
     setError("");
+    setLoading(true);
     const result = await validateError({email:emailRef.current.value,senha:passRef.current.value} as LoginData);
     /*if(emailRef.current.value==="" || passRef.current.value==="") setError("Preencha as campos de email e login")
     else*/
     //console.log(erroItems);
     if(result===true) {
       clearErrors();
-      login({email:emailRef.current.value,senha:passRef.current.value} as LoginData)
-        .then(()=>{navigate(from,{replace: true});})
+        await login({email:emailRef.current.value,senha:passRef.current.value} as LoginData)
+        .then(()=>{ setLoading(false); navigate(from,{replace: true});})
         .catch((e : any)=>{setError("Email e/ou senha incorretos.")});
+        
     }
+    setLoading(false);
   }
     return(
       <div  className=" flex flex-col min-w-min	 text-deep-blue gap-1 justify-between h-screen w-full place-items-center">
@@ -47,14 +50,14 @@ export function Login(){
                 </div>
                 }
                 <div className=" flex flex-col gap-5 ml-6 place-items-center justify-center ">
-                  <TextInput mref = {emailRef} light icon={<Envelope size={25}/>} label="E-mail:"  placeholder="email@email.com" 
+                  <TextInput mref = {emailRef!} light icon={<Envelope size={25}/>} label="E-mail:"  placeholder="email@email.com" 
                   {...handleErrorMessage("email")}
                   />
-                  <TextInput mref = {passRef} light icon={<Keyhole size={25}/>} label="Senha:" senha  placeholder="********" 
+                  <TextInput mref = {passRef!} light icon={<Keyhole size={25}/>} label="Senha:" senha  placeholder="********" 
                    {...handleErrorMessage("senha")}
                   />
                   <div className=" flex flex-col w-full mt-5 rounded-2xl place-items-center">
-                      <ButtonIcon text="Entrar na plataforma" onClickAlt={onSubmit}/>
+                      <ButtonIcon text="Entrar na plataforma" isLoading={loading}onClickAlt={onSubmit}/>
                 </div>
 
                 <Link to="/recuperarsenha" className="flex place-items-center justify-center"> <Text size="sm" bold underlined> Esqueceu a senha? </Text></Link>
