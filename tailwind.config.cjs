@@ -4,11 +4,6 @@ module.exports = {
     './src/**/**.tsx',
   ],
   theme: {
-    extend: {
-      spacing: {
-        '98': '25rem',
-      }
-    },
     fontSize: {
       xs: 14,
       sm: 16,
@@ -18,11 +13,12 @@ module.exports = {
       '2xl': 32,
     },
     colors:{
-     'deep-blue': '#2B5DA7',
+     'deep-blue': '#19478D',
      'bright-white': '#FFFFFF',
      'gray-shadow': '#D0D0D0',
      'inactive-blue': '#61799D',
      'incorrect-red': '#E05656',
+     'correct-green': '#359851',
       gray: {
         900: '#121214',
         800: '#202024',
@@ -32,8 +28,32 @@ module.exports = {
       },
     },
     extend: {
+      spacing:{
+        '98': '25rem'
+      },
+      spacing:{
+        '98': '25rem'
+      },
+      screens:{
+        'xs': '1px'
+      },
       width:{
-        '400': '400px'
+        '400': '400px',
+        '500': '500px',
+        '600': '600px',
+        '700': '700px',
+        '800': '800px',
+        '900': '900px',
+        'hd'  : '1000px'
+      },
+      height:{
+        '400': '400px',
+        '500': '500px',
+        '600': '600px',
+        '700': '700px',
+        '800': '800px',
+        '900': '900px',
+        'hd'  : '1000px'
       },
       fontFamily: {
         sans: '"Nato Sans", sans-serif'

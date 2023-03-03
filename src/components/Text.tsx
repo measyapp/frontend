@@ -15,7 +15,7 @@ export function Text({size = 'md',color, children, asChild, underlined=false,bol
     return (
         <Comp  
             className={clsx(
-                "font-sans",
+                "font-sans break-words",
                 {
                     'text-deep-blue': color === 'blue',
                     'text-bright-white': color === 'white',

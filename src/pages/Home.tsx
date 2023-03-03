@@ -4,7 +4,7 @@ export function Home() {
   return (
     <div>
     <Header/>
-    <div className='flex items-center justify-center m-64'>
+    <div className='flex items-center justify-center m-44'>
       <Menu/> 
     </div>
     <Footer/>

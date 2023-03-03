@@ -22,7 +22,7 @@ const navigator = useNavigate();
 
   const editUser = () =>{
     //Falta colocar o ID
-    navigator('/usuarios/cadastro/id');
+    navigator('/usuarios/cadastro/:id');
   }
 
  return(
@@ -32,9 +32,9 @@ const navigator = useNavigate();
             
             <div className="flex flex-col gap-1">
                 <Header>
-                    <h5 className="text-2xl">Colaboradores</h5>
+                    <Text bold >Colaboradores</Text>
                 </Header>
-             <ListHeader OnSerching={search} listObjectName={"colaborador"} buttonLink="/usuarios/cadastro"/>
+             <ListHeader addButton addButtonText={"Novo Colaborador"}  OnSerching={search} listObjectName={"colaborador"} buttonLink="/usuarios/cadastro"/>
             </div>
 
             <div className=" h-3/4 flex gap-2 mx-14 mt-2 mb-1 flex-wrap overflow-y-scroll max-w-full">

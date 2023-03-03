@@ -4,5 +4,7 @@ export * from "./UserList"
 export * from "./ProjectList"
 export * from "./Login"
 export * from "./Home"
-
-
+export * from "./RecuperaSenha"
+export * from "./MetricasList"
+export * from "./MetricaFile"
+export * from "./RedefiineSenha"

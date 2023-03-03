@@ -17,7 +17,7 @@ export function SearchBar({placeholder,onSearching,searchItems}:SerachBarProps){
 
         <div  id="search" className= "flex  w-96 h-12  rounded-2xl">
                 {searchItems!==undefined?
-                <select  className="bg-deep-blue w-44 h-12  ring-deep-blue ring-2  rounded-l-2xl text-bright-white">
+                <select  className="w-25 bg-deep-blue w-44 h-12  ring-deep-blue ring-2  rounded-l-2xl text-bright-white">
                     {searchItems&&
                          searchItems.map((order,index)=>(
                             <option label={order.description} key={index} value={order.field} onSelect={(e)=>{setFieldSearch(e.currentTarget.value)}}></option>

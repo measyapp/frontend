@@ -7,7 +7,7 @@ export interface CardButtonProps{
 }
 export function CardButton({icon,label,onClick}:CardButtonProps){
     return(
-        <button  className=" flex flex-col items-center mr-2 hover:scale-110 ease-in-out"
+        <button  className=" flex flex-col place-items-center justify-center hover:scale-110 ease-in-out"
                  onClick={()=>{if(onClick!==undefined){onClick()}}}
         >
                 {icon}

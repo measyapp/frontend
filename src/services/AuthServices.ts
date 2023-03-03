@@ -12,8 +12,19 @@ const signup=  (data : IUserData) => {
   return  Api.post('/auth/signup',data);
 }
 
+const getTokenPassReset =  (email : string) => {
+  return  Api.get('/auth/resetPassword/'+email);
+}
+
+const resetPassword = (newPass : String, token : String)=>{  
+  if (token!=='') Api.defaults.headers['x-altpass-token'] = token as any;
+  return Api.patch('/auth/resetPassword/',{senha: newPass});
+}
+
 export const AuthServices = {
     login,
     logout,
-    signup
+    signup,
+    getTokenPassReset,
+    resetPassword,
 }
