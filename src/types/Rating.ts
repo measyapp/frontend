@@ -7,5 +7,6 @@ export interface IRatingData {
     updatedAt: Date,
     comentario: string,
     nome?: string | "Projeto Measy - Default";
+
 }
 

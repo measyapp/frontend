@@ -1,8 +1,7 @@
 
 import {Api} from "../providers"
 import { IRatingData } from "../types"
-import { authToken } from "./utils";
-   
+import { authToken } from "./utils";   
 const getAll =  () => {
     const token = authToken();
     if (token!=='') Api.defaults.headers['x-access-token'] = token;
