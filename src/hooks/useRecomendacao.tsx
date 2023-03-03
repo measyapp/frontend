@@ -8,9 +8,11 @@ export const HookRecomendacao = () =>{
     const getIndicacao = useCallback(async (answers : string, id_proj : string)=>{
         const token = authToken();
         if (token!=='') Api.defaults.headers['x-access-token'] = token;
-        const {status, data} = await Api.post<any>("/indicacoes/indicacao",{resposta: answers});
-        if(status === 200){
-           const result = await Api.post<IMetricasData>("/indicacoes/",{id_projeto: id_proj, id_metrica: data.id});
+        //onst {status, data} = await Api.post<any>("/indicacoes/indicacao",{resposta: answers});
+        const id = Math.floor(Math.random()*15);
+        console.log(id);
+        if(id>0){
+           const result = await Api.post<IMetricasData>("/indicacoes/",{id_projeto: id_proj, id_metrica: id});
            if (result.status != 200) throw new Error("Falha Gravando Recomendacao")
         }
     },[])

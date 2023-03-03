@@ -206,94 +206,173 @@ export const initialProjects = [
 ] as unknown as IProjectData;
 
 export const Metricas : IMetricasData[] = [
-    {   "id": 1,
-        "tipo": "",
-        "referencial": "WERKEMA, C. Lean Seis Sigma: Introdução às ferramentas do Lean Manufacturing. 1ª. ed. Belo Horizonte: Werkema Editora, v. 4, 2006.",
-        "avaliacoes": 10,
-        "nome": "Tempo de entrega (lead time)",
-        "nota": 4.67,
-        "descricao": "O tempo de entrega é o tempo que algo leva do princípio ao fim. No desenvolvimento de software, por exemplo, o tempo de execução de um projeto começa com a proposta e termina com a entrega.",
+    {
+      id : 1,
+      nome: 'Capacidade de trabalho',
+      descricao: 'Avalia a quantidade de itens que uma equipe pode iniciar durante um período.',
+      tipo : 'Equipe',
+      nota: 0,
+      referencial: "SOMMERVILLE, Ian. Engenharia de Software. 6. v. Belo Horizonte: WERKEMA Editora, 2006. 120 p",
+      avaliacoes:0,
+      link: "https://www.youtube.com/watch?v=o9mg9cU7vIg",
+      formula:"Número de check-ins realizados nas ferramentas de versionamento de código"
+    },
+    {
+      id : 2,
+      nome: 'Velocidade (Velocity)',
+      descricao: 'Avalia a quantidade de incrementos efetivos realizados por uma equipe durante uma interação',
+      tipo : 'Equipe',
+      nota: 0,
+      referencial: "SOMMERVILLE, Ian. Engenharia de Software. 6. v. Belo Horizonte: WERKEMA Editora, 2006. 120 p",
+      avaliacoes:0,
+      link: "",
+      formula:"Somatório da pontuação realizada dividido pela quantidade de tempo que se deseja investigar"
+    },
+    {
+      id : 3,
+      nome: 'Número de desenvolvedores por feature/stories',
+      descricao: "Número de check-ins realizados nas ferramentas de versionamento de código",
+      tipo : 'Processo',
+      nota: 0,
+      referencial: "SOMMERVILLE, Ian. Engenharia de Software. 6. v. Belo Horizonte: WERKEMA Editora, 2006. 120 p",
+      avaliacoes:0,
+      link: "",
+      formula: ""
+    },
+    {
+      id : 4,
+      nome: 'Progresso, Gráfico de Burndown',
+      descricao: 'Avalia o andamento da equipe durante um período de tempo',
+      tipo : 'Processo',
+      nota: 0,
+      referencial: "SOMMERVILLE, Ian. Engenharia de Software. 6. v. Belo Horizonte: WERKEMA Editora, 2006. 120 p",
+      avaliacoes:0,
+      link: "",
+      formula:"Por não se tratar de um cálculo, a representação do burndown ocorre ao plotar os itens de backlog a serem realizados no eixo Y e os dias percorridos no eixo X."
+    },
+    {
+      id : 5,
+      nome: 'Cobertura de teste unitário por história de usuário',
+      descricao: 'Avalia a cobertura de teste código realizar em cada história de usuário',
+      tipo : 'Processo',
+      nota: 0,
+      referencial: "SOMMERVILLE, Ian. Engenharia de Software. 6. v. Belo Horizonte: WERKEMA Editora, 2006. 120 p",
+      avaliacoes:0,
+      link: "",
+      formula:"Multiplicar as branches de código por 100 e dividir pelos testes que cobrem as diferentes branches"
+    },
+    {
+      id : 6,
+      nome: 'Acurácia nas estimativas',
+      descricao: 'Avalia se as estimativas da sprint estão de acordo',
+      tipo : 'Equipe',
+      nota: 0,
+      referencial: "SOMMERVILLE, Ian. Engenharia de Software. 6. v. Belo Horizonte: WERKEMA Editora, 2006. 120 p",
+      avaliacoes:0,
+      link: "",
+      formula: "1-( Σ(deltas das estimativas de cada atividade) / previsão total))"
+    },
+    {
+      id : 7,
+      nome: 'Porcentagem do trabalho adotado',
+      descricao: 'Avalia a adição de demandas além do planejado para a sprint',
+      tipo : 'Processo',
+      nota: 0,
+      referencial: "SOMMERVILLE, Ian. Engenharia de Software. 6. v. Belo Horizonte: WERKEMA Editora, 2006. 120 p",
+      avaliacoes:0,
+      link: "https://www.youtube.com/watch?v=o9mg9cU7vIg",
+      formula:"Σ(estimativas do trabalho adicionado) / (previsão para a sprint)"
+    },
+    {
+      id : 8,
+      nome: 'Fator foco',
+      descricao: 'Avalia a capacidade da equipe de cumprir o compromisso de trabalho feito no início da sprint.',
+      tipo : 'Equipe',
+      nota: 0,
+      referencial: "SOMMERVILLE, Ian. Engenharia de Software. 6. v. Belo Horizonte: WERKEMA Editora, 2006. 120 p",
+      avaliacoes:0,
+      link: "",
+      formula:"Velocidade¹ = somatório da pontuação realizada dividido pela quantidade de tempo que se deseja investigar Capacidade de trabalho¹ = somatório dos itens de backlog reportados durante a sprint Fator foco = velocidade / capacidade de trabalho"
+    },
+    {
+      id : 9,
+      nome: 'Acurácia da previsão futura',
+      descricao: 'Avalia se as estimativas da sprint estão de acordo',
+      tipo : 'Equipe',
+      nota: 0,
+      referencial: "SOMMERVILLE, Ian. Engenharia de Software. 6. v. Belo Horizonte: WERKEMA Editora, 2006. 120 p",
+      avaliacoes:0,
+      link: "",
+      formula:"(∑estimativas originais) ∑ (∑estimativas originais + ∑trabalho adotado + ∑trabalho descoberto"
+    },
+    {
+      id : 10,
+      nome: 'Porcentagem de trabalho descoberto',
+      descricao: 'Avalia a adição de demandas não esperadas para a equipe durante a sprint',
+      tipo : 'Processo',
+      nota: 0,
+      referencial: "SOMMERVILLE, Ian. Engenharia de Software. 6. v. Belo Horizonte: WERKEMA Editora, 2006. 120 p",
+      avaliacoes:0,
+      link: "",
+      formula:"Σ(estimativas do trabalho descoberto) / (previsão para a sprint)"
+    },
+    {
+      id : 11,
+      nome: 'Vazão (Throughput)',
+      descricao: 'Avalia a capacidade de vazão das tarefas do projeto',
+      tipo : 'Equipe',
+      nota: 0,
+      referencial: "SOMMERVILLE, Ian. Engenharia de Software. 6. v. Belo Horizonte: WERKEMA Editora, 2006. 120 p",
+      avaliacoes:0,
+      link: "https://www.youtube.com/watch?v=vAG1ZVIWfNE",
+      formula:"Throughput médio = WiP médio  / lead time médio"
+    },
+    {
+      id : 12,
+      nome: 'WiP - Work in Progress',
+      descricao: 'Avalia se a equipe está focada na entrega de valor',
+      tipo : 'Processo',
+      nota: 0,
+      referencial: "SOMMERVILLE, Ian. Engenharia de Software. 6. v. Belo Horizonte: WERKEMA Editora, 2006. 120 p",
+      avaliacoes:0,
+      link: "",
+      formula:"∑ das atividades em progresso / quantidade de desenvolvedores"
+    },
+    {
+      id : 13,
+      nome: 'Satisfação dos clientes',
+      descricao: 'Avalia a satisfação do cliente em relação a experiência com a empresa desenvolvedora',
+      tipo : 'Organizacional',
+      nota: 0,
+      referencial: "SOMMERVILLE, Ian. Engenharia de Software. 6. v. Belo Horizonte: WERKEMA Editora, 2006. 120 p",
+      avaliacoes:0,
+      link: "",
+      formula:"(∑ de promotores - ∑ de detratores) / ∑ de respondentes"
+    },
+    {
+      id : 14,
+      nome: 'Tempo em processo (Lead Time)',
+      descricao: 'Avalia o tempo do card durante os diferentes estágios do processo',
+      tipo : 'Processo',
+      nota: 0,
+      referencial: "SOMMERVILLE, Ian. Engenharia de Software. 6. v. Belo Horizonte: WERKEMA Editora, 2006. 120 p",
+      avaliacoes:0,
+      link: "https://www.youtube.com/watch?v=vAG1ZVIWfNE",
+      formula:"∑ das atividades entregues / tempo decorrido do projeto"
+    },
+    {
+      id : 15,
+      nome: 'Cycle Time (Cycle time)',
+      descricao: 'Avaliar o tempo que passou desde quando o trabalho realmente começou até quando o pedido foi cumprido.',
+      tipo : 'Processo',
+      nota: 0,
+      referencial: "SOMMERVILLE, Ian. Engenharia de Software. 6. v. Belo Horizonte: WERKEMA Editora, 2006. 120 p",
+      avaliacoes:0,
+      link: "https://www.youtube.com/watch?v=vAG1ZVIWfNE",
+      formula:"∑ das atividades entregues / tempo decorrido até a entrega "
+    },
 
-    },
-    {
-        "id": 2,
-        "tipo": "",
-        "referencial": "WERKEMA, C. Lean Seis Sigma: Introdução às ferramentas do Lean Manufacturing. 1ª. ed. Belo Horizonte: Werkema Editora, v. 4, 2006.",
-        "avaliacoes": 10,
-        "nome": "Quantidade de código",
-        "nota": 2.5,
-        "descricao": "As equipes de desenvolvimento podem usar esta métrica de software, também conhecida como KLOC (Milhares de linhas de código), para determinar o tamanho de um aplicativo. Se este KPI for elevado, poderia indicar que os desenvolvedores foram eficientes em seus esforços de programação. Contudo, essa métrica não é útil quando uma equipe de desenvolvimento tenta comparar dois projetos elaborados com diferentes linguagens de programação. Além disso, vale considerar que mais quantidade de código nem sempre torna o código eficiente ou eficaz, o que pode significar mais trabalho de refatoração depois."
-    },{
-        "id": 3,
-        "tipo": "",
-        "referencial": "WERKEMA, C. Lean Seis Sigma: Introdução às ferramentas do Lean Manufacturing. 1ª. ed. Belo Horizonte: Werkema Editora, v. 4, 2006.",
-        "avaliacoes": 10,
-        "nome": "Trabalho em progresso (WIP)",
-        "nota": 4,
-        "descricao": "Em um contexto de engenharia de software, o WIP é um trabalho de desenvolvimento em que a equipe começou a trabalhar e já não se encontra em backlog. Um computador pode expressar o WIP num gráfico de burndown. Uma ferramenta comum para sprints ágeis e Scrum, esses gráficos mostram o quanto de trabalho a equipe já realizou e quanto ainda resta por fazer."
-    },{
-        "id": 4,
-        "tipo": "",
-        "referencial": "WERKEMA, C. Lean Seis Sigma: Introdução às ferramentas do Lean Manufacturing. 1ª. ed. Belo Horizonte: Werkema Editora, v. 4, 2006.",
-        "avaliacoes": 10,
-        "nome": "Taxa de sucesso da meta Sprint",
-        "nota": 1.5,
-        "descricao": "Essa métrica de software calcula a porcentagem de itens que a equipe de desenvolvimento completou no sprint backlog. Pode ocorrer que uma equipe não complete 100% do trabalho durante um determinado sprint. No entanto, o progresso da equipe poderia ainda cumprir a sua Definição de pronto (DoD): o limiar que um projeto deve cumprir para que uma organização o considere concluído. Se a iteração de desenvolvimento cumprir com definição de pronto, já é um sucesso."
-    },
-    {
-        "id": 5,
-        "tipo": "",
-        "referencial": "WERKEMA, C. Lean Seis Sigma: Introdução às ferramentas do Lean Manufacturing. 1ª. ed. Belo Horizonte: Werkema Editora, v. 4, 2006.",
-        "avaliacoes": 10,
-        "nome": "Velocidade ágil",
-        "nota": Math.random()*5,
-        "descricao": "Para calcular a velocidade, uma equipe de desenvolvimento ágil de software analisa os sprints anteriores e conta o número de histórias de usuários ou pontos de histórias completados ao longo do tempo. A velocidade ágil é uma estimativa de quão produtiva a equipe será num único sprint"
-    },{
-        "id": 6,
-        "tipo": "",
-        "referencial": "WERKEMA, C. Lean Seis Sigma: Introdução às ferramentas do Lean Manufacturing. 1ª. ed. Belo Horizonte: Werkema Editora, v. 4, 2006.",
-        "avaliacoes": 10,
-        "nome": "Número de versões de software",
-        "nota": Math.random()*5,
-        "descricao": "As equipes de desenvolvimento ágil e os DevOps priorizam os lançamentos de software contínuos e frequentes. Com esse KPI, as equipes podem monitorar com que frequência lançam software, seja mensal, semanal, diária, por hora, ou qualquer outro período de tempo, e se esse ritmo proporciona valor comercial suficiente."
-    },{
-        "id": 7,
-        "tipo": "",
-        "referencial": "WERKEMA, C. Lean Seis Sigma: Introdução às ferramentas do Lean Manufacturing. 1ª. ed. Belo Horizonte: Werkema Editora, v. 4, 2006.",
-        "avaliacoes": 10,
-        "nome": "Cobertura de código",
-        "nota": Math.random()*5,
-        "descricao": "Esta é a proporção de código fonte coberta por testes automatizados. A métrica do software permite aos testadores identificar quais as áreas do código que ainda devem ser testadas corretamente"
-    },
-    {
-        "id": 8,
-        "tipo": "",
-        "referencial": "WERKEMA, C. Lean Seis Sigma: Introdução às ferramentas do Lean Manufacturing. 1ª. ed. Belo Horizonte: Werkema Editora, v. 4, 2006.",
-        "avaliacoes": 10,
-        "nome": "Incidentes de segurança reais",
-        "nota": Math.random()*5,
-        "descricao": "Esse KPI conta o número de vezes que um hacker explora uma vulnerabilidade no software. Acompanha a frequência com que essas infrações ocorrem, a gravidade do ataque (por exemplo, que dados foram roubados), e o tempo de duração do incidente.."
-    },
-    {
-        "id": 9,
-        "tipo": "",
-        "referencial": "WERKEMA, C. Lean Seis Sigma: Introdução às ferramentas do Lean Manufacturing. 1ª. ed. Belo Horizonte: Werkema Editora, v. 4, 2006.",
-        "avaliacoes": 10,
-        "nome": "Net Promoter Score (NPS)",
-        "nota": Math.random()*5,
-        "descricao": "Essa métrica de software reflete a vontade dos clientes de recomendar um aplicativo a outros. O NPS é apresentado em uma escala de 0 a 10. Os clientes com uma pontuação de 0 a 6 são chamados Detratores; com pontuações de 7 e 8 são Neutros; e de 9 e 10 são Promotores."
-    },
-    {
-        "id": 10,
-        "tipo": "",
-        "referencial": "WERKEMA, C. Lean Seis Sigma: Introdução às ferramentas do Lean Manufacturing. 1ª. ed. Belo Horizonte: Werkema Editora, v. 4, 2006.",
-        "avaliacoes": 10,
-        "nome": "Vulnerabilidades de segurança",
-        "nota": Math.random()*5,
-        "descricao": "As análises de vulnerabilidade identificam as falhas de segurança em um aplicativo. Quanto menor for o número de vulnerabilidades encontradas, mais seguro é o software.."
-    },
-
-]
+  ]
 
 export const recQuestionsPadrao = [
     {
