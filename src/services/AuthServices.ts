@@ -1,6 +1,6 @@
 import {Api} from "../providers"
 import { IProjectData, IUserData, LoginData } from "../types"
-
+Api.defaults.headers['']
 const login =  (data : LoginData) => {
   return  Api.post("/auth/login",data);
 }
