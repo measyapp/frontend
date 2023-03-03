@@ -6,6 +6,8 @@ export function authToken(){
     let user = null;
 
     if(user_str) user = JSON.parse(user_str);
+    console.log(user);
+    console.log(user_str);
     if(user&&user.token){
         return user.token
     } else {return ''}

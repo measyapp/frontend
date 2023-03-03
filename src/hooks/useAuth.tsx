@@ -16,6 +16,7 @@ export const useAuth = () =>{
     const isLogged = ()=>{
         const token = authToken()
         if(token==='') return false;
+        console.log(token);
         let isExpired = false; 
         let decodedToken = jwt_decode(token) as any;
         let currentDate = new Date();
@@ -23,16 +24,17 @@ export const useAuth = () =>{
         if (decodedToken&&decodedToken.exp&&(decodedToken.exp * 1000 < currentDate.getTime())) {
             isExpired=true;
         }
+        console.log(isExpired);
         return !isExpired;
     }
-    const login =  useCallback(async (Ldata : LoginData) =>{
+    const login : any =  useCallback(async (Ldata : LoginData) =>{
        
         const {status,data} = await AuthServices.login(Ldata);
         if(status === 200) {
             localStorage.setItem('user',JSON.stringify(data));
         }
        
-       return {status};
+       return {status,...data};
     },[])
     
     const logout =  useCallback(async () =>{

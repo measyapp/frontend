@@ -15,7 +15,6 @@ export function  AppRoutes () {
       <Route path='/recuperarsenha' element={<RecuperaSenha/>}/>
       <Route path='/redefineSenha/:token' element= {<RedefineSenha/>}/>
       <Route path='/redefineSenha/:token' element= {<RedefineSenha/>}/>
-      <Route path='/recomendacao/:id' element= {<QuestionarioRec/>}/>
       <Route element={<RequireAuth/>}>
         <Route path="/metricas" element={<MetricasList/>} />
         <Route path="/metricas/:id" element={<MetricaFile/>} />
@@ -27,6 +26,8 @@ export function  AppRoutes () {
         <Route path="/projetos/:id" element={<ResgisterProject/>} />
         <Route path="/usuarios" element={<UserList/>} /> 
         <Route path="/usuarios/:id" element={<ResgisterUser/>} />
+        <Route path='/recomendacao/:id' element= {<QuestionarioRec/>}/>
+      
         </Route>
       
     </Routes>

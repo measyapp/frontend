@@ -30,9 +30,11 @@ export function Login(){
     //console.log(erroItems);
     if(result===true) {
       clearErrors();
-        await login({email:emailRef.current.value,senha:passRef.current.value} as LoginData)
-        .then(()=>{ setLoading(false); navigate(from,{replace: true});})
-        .catch((e : any)=>{setError("Email e/ou senha incorretos.")});
+        const result = await login({email:emailRef.current.value,senha:passRef.current.value} as LoginData);
+
+        setLoading(false); 
+        if(result.status===200) navigate("/");
+        else setError(result.msg);
         
     }
     setLoading(false);
@@ -50,10 +52,10 @@ export function Login(){
                 </div>
                 }
                 <div className=" flex flex-col gap-5 ml-6 place-items-center justify-center ">
-                  <TextInput mref = {emailRef!} light icon={<Envelope size={25}/>} label="E-mail:"  placeholder="email@email.com" 
+                  <TextInput mref = {emailRef} light icon={<Envelope size={25}/>} label="E-mail:"  placeholder="email@email.com" 
                   {...handleErrorMessage("email")}
                   />
-                  <TextInput mref = {passRef!} light icon={<Keyhole size={25}/>} label="Senha:" senha  placeholder="********" 
+                  <TextInput mref = {passRef} light icon={<Keyhole size={25}/>} label="Senha:" senha  placeholder="********" 
                    {...handleErrorMessage("senha")}
                   />
                   <div className=" flex flex-col w-full mt-5 rounded-2xl place-items-center">

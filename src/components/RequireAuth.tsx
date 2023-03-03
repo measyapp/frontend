@@ -6,7 +6,7 @@ export const RequireAuth = ()=>{
     const {isLogged} = useAuth();
     const location = useLocation();
 
-    //console.log(token);
+    console.log(isLogged());
     return (
         isLogged()?
             <Outlet/>
