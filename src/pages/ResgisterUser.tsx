@@ -42,6 +42,7 @@ export function ResgisterUser(){
             funcao: funcao,
             email: email.current.value,
             senha: senha.current.value,
+            updatedAt: new Date()
         }
         const result = await validateError(newUser);
         if (result){

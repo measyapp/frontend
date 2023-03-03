@@ -6,8 +6,8 @@ export interface IUserData{
     funcao: number,
     email: string,
     senha: string,
-    createdAt?: string,
-    updatedAt: string
+    createdAt?: Date,
+    updatedAt: Date
 }
 
 export const validateUser = Yup.object().shape({

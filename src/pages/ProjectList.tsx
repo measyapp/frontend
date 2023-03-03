@@ -45,7 +45,7 @@ export function ProjectList(){
             <div className=" h-3/4 flex gap-2 mx-14 mt-2 mb-1 flex-wrap overflow-y-scroll max-w-full">
                 { (orderedProjects.length>0) &&
                   orderedProjects.map((iproject,index)=>(
-                    <ProjectCard key = {(iproject.id*3 + index).toString()} item = {iproject}/>
+                    <ProjectCard key = {(iproject.id)} item = {iproject}/>
                 ))
                 }
                 
