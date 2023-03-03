@@ -33,7 +33,7 @@ export function ResgisterProject(){
             tamanhoRef.current.value = singleProject.tamanho
             tipoRef.current.value = singleProject.tipo;
             metodologiaRef.current.value = singleProject.metodologia;
-            getMetricaById(singleProject.indicacao)
+            if (singleProject.indicacao) getMetricaById(singleProject.indicacao)
            }
         }
     },[singleProject]);

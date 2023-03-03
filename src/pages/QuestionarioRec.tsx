@@ -26,7 +26,8 @@ export function QuestionarioRec(){
         recQuestions.forEach((iquest,index)=>{
             answers=answers+iquest.value;
         });
-       console.log(answers); 
+       console.log(answers);
+       console.log(id); 
        setLoading(true);
        await getIndicacao(answers,id===undefined?"0":id);
        setLoading(false);
