@@ -1,24 +1,26 @@
 import {IProjectData} from "../types"
-import { HookProjects } from "../hooks";
+import { HookMetricas, HookProjects } from "../hooks";
 import { MdCancel}  from "react-icons/md"
-import { createRef, useEffect} from "react";
+import { createRef, useEffect, useState} from "react";
 import { Graph,IdentificationBadge} from "phosphor-react";
-import { useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import {tiposList,metodologiasList,tamanhosList} from "../data"
 import { ButtonIcon,ComboBox,Footer,Header,Text,TextInput } from "../components";
 import { useFormValidation } from "../formValidation/useFormValidation";
+import { MetricaCard } from "../components/MetricaCard";
 
 export function ResgisterProject(){
     const {id} = useParams();
     const {create,singleProject,getById,update} = HookProjects();
     const navigate = useNavigate();
-
+    const {getMetricaById,singleMetrica} = HookMetricas();
     const nomeRef = createRef<any>();
     const descRef = createRef<any>();
     const gerenteRef = createRef<any>();
     const tamanhoRef = createRef<any>();
     const tipoRef = createRef<any>();
     const metodologiaRef = createRef<any>();
+    const[loading,setLoading] = useState<boolean>(false);
      const {validateError, handleErrorMessage} = useFormValidation<IProjectData>('validateProject');
     useEffect( ()=>{
         if((id!==undefined)&&(singleProject===undefined)){
@@ -31,6 +33,7 @@ export function ResgisterProject(){
             tamanhoRef.current.value = singleProject.tamanho
             tipoRef.current.value = singleProject.tipo;
             metodologiaRef.current.value = singleProject.metodologia;
+            getMetricaById(singleProject.indicacao)
            }
         }
     },[singleProject]);
@@ -48,12 +51,15 @@ export function ResgisterProject(){
             updatedAt: new Date()
         }
         const result = await validateError(newProject);
+        
         if(result){
+            setLoading(true);
             if (id===undefined){
                 create(newProject);
             }else {
                 update(+id,newProject);
             }
+            setLoading(false);
             navigate('/projetos');
         }
         
@@ -68,7 +74,7 @@ export function ResgisterProject(){
                     {singleProject!==undefined ?<Text>{singleProject.nome}</Text> : <Text>Novo Projeto</Text>}
                 </div>
                 <div className=" flex self-center w-full h-fit gap-20 pt-7 pb-10 px-8 ring-deep-blue ring-2 bg-bright-white">
-                    <div className=" flex flex-col justify-between gap-6 w-3/5">
+                    <div className=" flex flex-col  gap-6 w-400">
                         <TextInput mref={nomeRef} 
                                    label="Nome do projeto" 
                                    txtValue={singleProject!==undefined ?singleProject.nome:""} 
@@ -95,15 +101,21 @@ export function ResgisterProject(){
                         <ComboBox mref={tipoRef} label="Tipo" selected={singleProject!==undefined ?singleProject.tipo:0} items={tiposList}/>
                         <ComboBox mref={metodologiaRef} label="Metodologia" selected= {singleProject!==undefined ?singleProject.metodologia:0} items = {metodologiasList}/>
                         <ComboBox mref={tamanhoRef} label="Tamanho" selected= {singleProject!==undefined ?singleProject.tamanho:0} items= {tamanhosList}/>
-                        
+                        {singleProject!==undefined&&
+                                    (singleProject.indicacao===undefined||singleProject.indicacao<=0?
+                                    <Link to={`/recomendacao/${id}`}><ButtonIcon text="Receber recomendação de Métrica"/></Link>:
+                                    singleMetrica!=undefined?<MetricaCard item={singleMetrica}/>:<></>)
+                                }    
+                    
                     </div>
+
                 </div>
-                <div className=" w-full h-20  flex gap-7 justify-center rounded-b-2xl place-items-center ring-deep-blue ring-2 bg-bright-white">
+                <div className=" w-full h-20 p-3 flex gap-7 justify-center rounded-b-2xl place-items-center ring-deep-blue ring-2 bg-bright-white">
                     <div className="w-52">
-                       <ButtonIcon onClickAlt={SaveProject} text="Salvar projeto"/>
+                       <ButtonIcon onClickAlt={SaveProject} isLoading={loading} text="Salvar projeto"/>
                     </div>
                     <div className="w-52">
-                          <ButtonIcon text="Cancelar"/>
+                          <Link to="/projetos/"><ButtonIcon text="Cancelar"/></Link>
                     </div>
                     
                 </div>

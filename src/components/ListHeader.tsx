@@ -20,7 +20,7 @@ export function ListHeader({listObjectName,buttonLink,OnSerching,OnOrder,searchI
             <SearchBar placeholder={'Encontrar '+listObjectName} searchItems={searchItems} onSearching={(strBusca : string,strField : string = "") => { if (OnSerching!==undefined) OnSerching(strBusca,strField)}}/>
             <ListOrderCombobox onOrder={OnOrder} /> 
         </div>
-        <div className="mx-4 w-7xl h-0.5   outline-4 rounded-xl bg-deep-blue my-2"/>
+        <div className="mx-4 w-7xl h-0.5 outline-4 rounded-xl bg-deep-blue my-2"/>
         </div>
     );
 }

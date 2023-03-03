@@ -18,13 +18,13 @@ export function ProjectList(){
   },[projects,querySearch,fieldSearch]) 
   const orderedProjects = useMemo(()=>{
     return filteredProjects.sort((a,b)=>{
-      /*if (fieldOrder === 'nome'){
-        */  return a.nome.localeCompare(b.nome)
-      //}
-      /*else if (fieldOrder === 'updatedAt') {
-          return   b?.updatedAt - a.updatedAt
-      }*/
-    return a.nome.localeCompare(b.nome);  
+      if (fieldOrder === 'nome desc'){
+        return (-1)*a.nome.localeCompare(b.nome)
+      }
+      else if (fieldOrder === 'updatedAt') {
+          return new Date(a.updatedAt) < new Date(b.updatedAt) ? 1 : -1
+      }
+      return a.nome.localeCompare(b.nome);  
     })
       
       
@@ -45,7 +45,7 @@ export function ProjectList(){
             <div className=" h-3/4 flex gap-2 mx-14 mt-2 mb-1 flex-wrap overflow-y-scroll max-w-full">
                 { (orderedProjects.length>0) &&
                   orderedProjects.map((iproject,index)=>(
-                    <ProjectCard key = {(iproject.id*3 + index).toString()} item = {iproject}/>
+                    <ProjectCard key = {(iproject.id)} item = {iproject}/>
                 ))
                 }
                 

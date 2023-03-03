@@ -13,6 +13,13 @@ export const HookRatings = () =>{
         setRatings(data);
         
     },[])
+    const getAllByMetricId =  useCallback(async (id : any) =>{
+        const {status, data} = await RatingService.getAllByMetricaId(id);
+
+        if(status != 200) throw new Error();
+        setRatings(data);
+    },[])
+    
     const getById =  useCallback(async (id : any) =>{
         const {status, data} = await RatingService.getById(id);
 
@@ -49,6 +56,7 @@ export const HookRatings = () =>{
         update,
         getById,
         remove,
-        ratings
+        ratings,
+        getAllByMetricId
     }
 }

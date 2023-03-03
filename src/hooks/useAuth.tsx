@@ -5,12 +5,14 @@ import AuthContext from "../context/AuthProvider";
 import { AuthContextType } from "../types/AuthContextType";
 import { authToken } from "../services/utils";
 import jwt_decode from "jwt-decode"
+import { useNavigate } from "react-router";
 
 
 export const useAuth = () =>{
     
     //const [authorized,setAuthorized] = useState<boolean>(false)
-    var success = false; 
+    var success = false;
+    const navigator = useNavigate();  
     const isLogged = ()=>{
         const token = authToken()
         if(token==='') return false;
@@ -26,8 +28,7 @@ export const useAuth = () =>{
     const login =  useCallback(async (Ldata : LoginData) =>{
        
         const {status,data} = await AuthServices.login(Ldata);
-        console.log(data);
-       if(status === 200) {
+        if(status === 200) {
             localStorage.setItem('user',JSON.stringify(data));
         }
        
@@ -36,12 +37,12 @@ export const useAuth = () =>{
     
     const logout =  useCallback(async () =>{
         const {status} = await AuthServices.logout();
-        
         localStorage.removeItem('user');
     },[])
-    const signup =  useCallback(async (data : IUserData) =>{
-        const {status} = await AuthServices.signup(data);
-        if(status !== 201) { alert("Falha Criando Usuário. Tente Novamente"); throw new Error();};
+    const signup =  useCallback(async (edata : IUserData) =>{
+        const {status,data} = await AuthServices.signup(edata);
+        
+        if(status !== 201) { alert("Falha Criando Usuário."+data?.msg!==undefined?data.msg:""+". Tente novamente."); throw new Error();};
 
     },[])
 
@@ -53,7 +54,9 @@ export const useAuth = () =>{
 
     const resetPassword= async (newPass : String, token : String)=>{
         const {status, data} =  await AuthServices.resetPassword(newPass,token);
-        return status
+        if (status===204){alert("Senha alterada com sucesso");}
+        else {alert("Falha alterando senha. "+data.msg);}
+        navigator("/login");
     }
     return {
         login,

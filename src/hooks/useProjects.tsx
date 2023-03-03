@@ -11,25 +11,11 @@ export const HookProjects = () =>{
     const [fieldSearch,setFieldSearch] = useState<string>("")
     const [fieldOrder, setFieldOrder] = useState<string>("");
 
-    const filteredProjects = useMemo(()=>{
-        return projects.filter(item =>{
-            return item.nome.toLocaleLowerCase().includes(querySearch.toLocaleLowerCase());    
-        }).sort((a,b)=>{
-            if (fieldOrder === 'nome'){
-                return a.nome.localeCompare(b.nome)
-            }
-            else {
-                return  b.nome.localeCompare(a.nome)
-            }
-
-        })
-    },[projects,querySearch,fieldSearch,fieldOrder]) 
-
     const getAll =  useCallback(async () =>{
-        const {status, data} = await ProjectsService.getAll();
-
-        if(status != 200) throw new Error();
+        const idUser= getLoggedId()
+        const {status, data} = await ProjectsService.getAllByUser(idUser);
         //console.log(data)
+        if(status != 200) throw new Error();
         setProjects(data);
         
     },[])
@@ -37,7 +23,7 @@ export const HookProjects = () =>{
         const {status, data} = await ProjectsService.getById(id);
 
         if(status != 200) throw new Error();
-
+        //console.log(data);
         setsingleProject(data);
     },[])
     const create =  useCallback(async (data : IProjectData) =>{
@@ -81,7 +67,6 @@ export const HookProjects = () =>{
         search,
         order,
         projects,
-        filteredProjects,
         singleProject
     }
 }

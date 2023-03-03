@@ -16,14 +16,6 @@ export const HookMetricas = () =>{
 
         if(status != 200) throw new Error();
         //console.log(data)
-        data.forEach((imetrica,index)=>{
-            if(imetrica.nota ===undefined){
-                imetrica.nota=Math.random()*5; 
-            }
-            if(imetrica.avaliacoes===undefined){
-                imetrica.avaliacoes=Math.floor(Math.random()*200)
-            }
-        });
         ranking(data);
         
         data.sort((a,b)=>{
@@ -31,18 +23,16 @@ export const HookMetricas = () =>{
         });
         setMetricas(data);
         
-        //console.log(data)
         
         
     },[])
-    const getById =  useCallback(async (id : any) =>{
+    const getMetricaById =  async (id : any) =>{
         const {status, data} = await MetricsService.getById(id);
 
         if(status != 200) throw new Error();
-
         setSMetrica(data);
 
-    },[])
+    }
     const create =  useCallback(async (data : IMetricasData) =>{
         const {status}= await MetricsService.create(data);
 
@@ -55,11 +45,7 @@ export const HookMetricas = () =>{
         if (status != 200) throw new Error();
 
     },[])
-    
-    const search = (Parameter:string,Field: string = "")=>{
-        setQuerySearch(Parameter);
-        setFieldSearch(Field);
-    }
+
     const ranking = useCallback( async (data : IMetricasData[]) =>{
         //setMetrics(projects.sort());
         data.sort((a,b)=>{ 
@@ -79,9 +65,8 @@ export const HookMetricas = () =>{
         getAll,
         create,
         update,
-        getById,
+        getMetricaById,
         remove,
-        search,
         metricas,
         singleMetrica,
         ranking,

@@ -25,7 +25,7 @@ export const HookUsers = () =>{
     const create =  useCallback(async (data : IUserData) =>{
         
         const {status}= await UserService.create(data);
-        if (status != 200) throw new Error();
+        if (status != 201) throw new Error();
 
     },[])
     const update =  useCallback(async (id: number,data : IUserData) =>{
@@ -34,27 +34,7 @@ export const HookUsers = () =>{
         if (status != 200) throw new Error();
 
     },[])
-    
-    const search = (Parameter:string,Field='')=>{
-        if (Parameter===""){
-            getAll();
-        } else{
-            setUsers(users.filter((element)=>{
 
-                return users.some((index)=>{
-                    return element.nome.toLowerCase().includes(Parameter.toLocaleLowerCase());
-                })
-            }));
-        }
-    }
-    const order = (Field : any)=>{
-        //setUsers(users.sort());
-        setUsers(users.sort((a,b)=>{ 
-           if (a.nome === undefined ) return -1
-           if (b.nome === undefined ) return 1
-           return  (a.nome) > (b.nome) ? 1:-1
-        }));
-    }
     const remove = useCallback(async (id : number) =>{
         const {status}= await UserService.remove(id);
         if (status != 200) throw new Error();
@@ -67,8 +47,6 @@ export const HookUsers = () =>{
         update,
         getById,
         remove,
-        search,
-        order,
         users,
         user
     }
