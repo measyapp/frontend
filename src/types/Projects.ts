@@ -5,7 +5,7 @@ export interface IProjectData{
     nome: string
     descricao: string
     metodologia: number,
-    indicacao?: number,
+    indicacao?: number | -1,
     tipo: number
     tamanho: number
     gerente: string

@@ -8,6 +8,7 @@ import formula from "../images/formula.svg";
 import { RatingCard } from "../components/RatingCard";
 import { Rating } from "@mui/material";
 import { RegisterRating } from "./RegisterRating";
+import { Metricas } from "../data";
 export interface MetricaFileProps{
     metrica : IMetricasData;
 }
@@ -38,21 +39,18 @@ export function MetricaFile(){
                                     readonly
                             />
                             <div className="flex flex-col gap-6 mr-5 pr-7 mt-7">
-                                <div className="flex">
-                                    <Text size="lg">Como é calculada</Text>
-                                </div>
-                                
-                                <div className="flex h-fit w-48 ring-2 overflow-hidden rounded-2xl ring-deep-blue place-items-center justify-center">
-                                        <img src={formula} width={530}/>
-                                </div>
-                                
+                                <TextInput richText
+                                    label="Como é calculada" 
+                                    txtValue={singleMetrica&&Metricas[singleMetrica.id].formula}
+                                    readonly
+                               />
                             
                             </div>
                         
                             <TextInput richText
                                     label="Referencial teórico" 
                                     placeholder="Ex.: My First Project"
-                                    txtValue={singleMetrica&&singleMetrica.referencial}
+                                    txtValue={singleMetrica&&Metricas[singleMetrica.id].referencial}
                                     readonly
                             /> 
                         </div>
@@ -61,7 +59,7 @@ export function MetricaFile(){
                                 <img src={youtube_logo} width={127}/>
                             </div>
                             <div className="flex place-items-center justify-center">
-                                <Text size="lg">Assista ao tutorial da métrica</Text>
+                                <a href={singleMetrica!==undefined?Metricas[singleMetrica.id].link:""}><Text size="lg">Assista ao tutorial da métrica</Text></a>
                             </div>
                            
                         </div>

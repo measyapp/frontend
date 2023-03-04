@@ -6,5 +6,7 @@ export interface IMetricasData{
     nota: number ,
     descricao: string,
     referencial : string,
+    formula: string,
+    link: string;
     tipo : string
 }

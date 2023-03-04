@@ -40,16 +40,17 @@ export function ResgisterUser(){
     const SaveUser = async ()=>{
         //console.log(afuncao);
         //console.log(funcaoRef.current.value);
-        
+
         const newUser : IUserData = {
             id: id===undefined? 0:(id as unknown as number),
             nome: nome.current.value,
             cpf: cpf.current.value,
             funcao: funcaoRef.current.value,
             email: email.current.value,
-            senha: (confirmasenha.current.value as string)!==""?confirmasenha.current.value:senha.current.value,
+            senha: confirmasenha?.current!==null?confirmasenha.current.value:senha.current.value,
             updatedAt: new Date()
         }
+        console.log(newUser);
         setLoading(true);
         const result = await validateError(newUser);
         if (result){
